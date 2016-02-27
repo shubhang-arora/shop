@@ -22,6 +22,9 @@
     {!! Form::label('user_name','User Name:') !!}
     {!! Form::text('user_name',null) !!}
 
+    {!! Form::label('categories','Category') !!}
+    {!! Form::select('categories[]',$categories,null,['class'=>'required-item','id'=>'tag_list','aria-required'=>'true','multiple']) !!}
+
     {!! Form::label('email','Email') !!}
     {!! Form::text('email',null) !!}
 

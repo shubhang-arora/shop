@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Category;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -52,6 +53,7 @@ class AuthController extends Controller
             'amount_paid'   =>  'required',
             'description'   =>  'required',
             'admin_password' => 'required',
+            'categories'    =>  'required'
         ]);
     }
 
@@ -63,8 +65,7 @@ class AuthController extends Controller
      */
     protected function create(array $data,$password,$premium_shop)
     {
-
-        return User::create([
+        $users =  User::create([
             'shop_name' => $data['shop_name'],
             'user_name' => $data['user_name'],
             'email' => $data['email'],
@@ -77,5 +78,22 @@ class AuthController extends Controller
             'premium_shop'  => $premium_shop,
             'password' => bcrypt($password),
         ]);
+        $this->syncCategories($users, $data['categories']);
+        return $users;
+    }
+
+    private function syncCategories(User $users , $categories)
+    {
+
+        $users->categories()->detach();
+
+        foreach ( $categories as $category ) {
+            $newCategories=Category::firstOrCreate([
+                'name'          =>      $category,
+            ]);
+
+            $users->categories()->attach($newCategories);
+
+        }
     }
 }
