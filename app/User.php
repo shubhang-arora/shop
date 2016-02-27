@@ -39,7 +39,7 @@ class User extends Model implements AuthenticatableContract,
         'state',
         'description',
         'premium_shop',
-        'amount_paid'
+        'amount_paid',
     ];
 
     /**
