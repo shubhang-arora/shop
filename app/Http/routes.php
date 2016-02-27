@@ -23,3 +23,7 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+// Advertise routes...
+Route::get('add/advertisement','ShopController@getAdvertise');
+Route::post('add/advertisement','ShopController@postAdvertise');
