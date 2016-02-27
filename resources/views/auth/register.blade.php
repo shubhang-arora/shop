@@ -1,5 +1,18 @@
 <!-- resources/views/auth/register.blade.php -->
-
+@if (session('status'))
+    <div class="alert-message error">
+        {{ session('status') }}
+    </div>
+@endif
+@if($errors->any())
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-content">
+                @include('errors.list')
+            </div>
+        </div>
+    </div>
+@endif
 {!! Form::open(['action'=>'Auth\AuthController@getRegister']) !!}
     {!! csrf_field() !!}
 
