@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Advertisement;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -101,6 +102,11 @@ class ShopController extends Controller
 
     public function postAdvertise(AdvertiseRequest $request)
     {
-        dd($request->all());
+        Advertisement::create([
+            'user_id'       =>  $request->input('shop_id'),
+            'title'         =>  $request->input('title'),
+            'description'   =>  $request->input('description'),
+            'money'         =>  $request->input('money')
+        ]);
     }
 }

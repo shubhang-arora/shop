@@ -10,7 +10,8 @@ class Advertisement extends Model
     protected $fillable = [
         'shop_id',
         'title',
-        'description'
+        'description',
+        'money'
     ];
 
     public function user()
