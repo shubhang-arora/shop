@@ -17,7 +17,7 @@ class CreateOffersTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->integer('premium_offer');
-            $table->integer('city_id');
+            $table->integer('city_id')->unsigned();
             $table->timestamp('start_date');
             $table->timestamp('end_date');
             $table->timestamps();
