@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Advertisement;
+use App\City;
+use App\Offer;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -107,6 +109,25 @@ class ShopController extends Controller
             'title'         =>  $request->input('title'),
             'description'   =>  $request->input('description'),
             'money'         =>  $request->input('money')
+        ]);
+    }
+
+    public function getOffer()
+    {
+        $shops = User::lists('shop_name','id');
+        $cities = City::lists('name','id');
+        return view('Shop.offer',compact('shops','cities'));
+    }
+
+    public function postOffer(Request $request)
+    {
+        Offer::create([
+            'user_id'       =>  $request->input('shop_id'),
+            'title'         =>  $request->input('title'),
+            'description'   =>  $request->input('description'),
+            'start_date'    =>  $request->input('start_date'),
+            'end_date'    =>  $request->input('end_date'),
+            'premium_offer' =>  $request->input('premium_offer')
         ]);
     }
 }
