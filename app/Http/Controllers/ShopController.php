@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdvertiseRequest;
+use Illuminate\Support\Facades\DB;
 
 class ShopController extends Controller
 {
@@ -121,7 +122,7 @@ class ShopController extends Controller
 
     public function postOffer(Request $request)
     {
-        Offer::create([
+      $offer =   Offer::create([
             'user_id'       =>  $request->input('shop_id'),
             'title'         =>  $request->input('title'),
             'description'   =>  $request->input('description'),
@@ -129,5 +130,28 @@ class ShopController extends Controller
             'end_date'    =>  $request->input('end_date'),
             'premium_offer' =>  $request->input('premium_offer')
         ]);
+        if($request->input('city_id')==-1)
+        {
+            $cities = City::all();
+            foreach($cities as $city)
+            {
+                DB::table('city_offer')->create([
+                     'city_id'  =>  $city->id,
+                    'offer_id'  => $offer->id
+                    ]);
+            }
+        }
+        else
+        {
+            foreach($request->input('city_id') as $city)
+            {
+                DB::table('city_offer')->create([
+                    'city_id'  =>  $city,
+                    'offer_id'  => $offer->id
+                ]);
+            }
+        }
     }
+
+
 }
