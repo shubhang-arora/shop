@@ -27,8 +27,3 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 // Advertise routes...
 Route::get('add/advertisement','ShopController@getAdvertise');
 Route::post('add/advertisement','ShopController@postAdvertise');
-
-
-//Password Reset route...
-Route::get('change-password','Auth\PasswordController@change');
-Route::post('change-password','Auth\PasswordController@changePassword');

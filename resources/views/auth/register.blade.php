@@ -19,7 +19,7 @@
     {!! Form::label('shop_name','Shop Name:') !!}
     {!! Form::text('shop_name',null) !!}
 
-    {!! Form::label('user_name','User Name:') !!}
+    {!! Form::label('user_name','Your Name:') !!}
     {!! Form::text('user_name',null) !!}
 
     {!! Form::label('categories','Category') !!}
