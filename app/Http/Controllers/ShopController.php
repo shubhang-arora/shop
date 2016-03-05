@@ -154,4 +154,17 @@ class ShopController extends Controller
     }
 
 
+    public function getShop()
+    {
+        $shops = User::latest('created_at')->where('added',0)->get();
+        dd($shops);
+    }
+
+    public function postShop(Request $request)
+    {
+        $shop = User::find($request->input('id'));
+        $shop = $shop->update([
+           'added'  =>  1
+        ]);
+    }
 }
