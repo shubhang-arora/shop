@@ -40,17 +40,17 @@
     {!! Form::label('phone','Contact') !!}
     {!! Form::text('phone',null) !!}
 
-    {!! Form::label('amount_paid','Amount Paid') !!}
-    {!! Form::text('amount_paid',null) !!}
-
     {!! Form::label('premium_shop','Premium Shop') !!}
     {!! Form::checkbox('premium_shop',null) !!}
 
     {!! Form::label('description','Description') !!}
     {!! Form::textarea('description',null) !!}
 
-    {!! Form::label('admin_password','Admin Password') !!}
-    {!! Form::password('admin_password',null) !!}
+    {!! Form::label('password','Password') !!}
+    {!! Form::password('password',null) !!}
+
+    {!! Form::label('password_confirmation','Confirm Password') !!}
+    {!! Form::password('password_confirmation',null) !!}
     <div>
         <button type="submit">Register</button>
     </div>
