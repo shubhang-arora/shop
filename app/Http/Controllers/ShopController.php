@@ -168,8 +168,4 @@ class ShopController extends Controller
         ]);
     }
 
-    public function add()
-    {
-
-    }
 }
