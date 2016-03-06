@@ -167,4 +167,9 @@ class ShopController extends Controller
            'added'  =>  1
         ]);
     }
+
+    public function add()
+    {
+
+    }
 }
