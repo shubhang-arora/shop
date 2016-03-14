@@ -28,6 +28,9 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::get('add/advertisement','ShopController@getAdvertise');
 Route::post('add/advertisement','ShopController@postAdvertise');
 
+//Offer routes...
+Route::get('add/offer','ShopController@getOffer');
+Route::post('add/offer','ShopController@postOffer');
 
 // Add Shop route...
 Route::get('add-shop','ShopController@getShop');

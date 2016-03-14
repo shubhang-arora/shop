@@ -51,6 +51,8 @@
 
     {!! Form::label('password_confirmation','Confirm Password') !!}
     {!! Form::password('password_confirmation',null) !!}
+
+    {!! Recaptcha::render() !!}
     <div>
         <button type="submit">Register</button>
     </div>
