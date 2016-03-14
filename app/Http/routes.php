@@ -27,10 +27,14 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 // Advertise routes...
 Route::get('add/advertisement','ShopController@getAdvertise');
 Route::post('add/advertisement','ShopController@postAdvertise');
+Route::get('admin/approve/advertisement','ShopController@approveAdvertisement');
+Route::post('admin/approve/advertisement','ShopController@approvedAdvertisement');
 
 //Offer routes...
 Route::get('add/offer','ShopController@getOffer');
 Route::post('add/offer','ShopController@postOffer');
+Route::get('admin/approve/offer','ShopController@approveOffer');
+Route::post('admin/approve/offer','ShopController@approvedOffer');
 
 // Add Shop route...
 Route::get('add-shop','ShopController@getShop');
