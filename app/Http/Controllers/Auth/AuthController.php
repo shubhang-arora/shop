@@ -50,7 +50,6 @@ class AuthController extends Controller
             'city'  =>  'required',
             'state' =>  'required',
             'phone' =>  'required|min:10|max:10',
-            'amount_paid'   =>  'required',
             'description'   =>  'required',
             'password' => 'required|min:6|confirmed',
             'categories'    =>  'required'
