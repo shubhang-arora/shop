@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AdvertiseRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpKernel\EventListener\AddRequestFormatsListener;
 
 class ShopController extends Controller
 {
@@ -20,7 +21,7 @@ class ShopController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('isAdmin',['only' =>  ['approveAdvertisement','approvedAdvertisement','approveOffer','approvedOffer']]);
+        $this->middleware('isAdmin',['only' =>  ['approveAdvertisement','approvedAdvertisement']]);
     }
     /**
      * Display a listing of the resource.
@@ -108,18 +109,40 @@ class ShopController extends Controller
         Advertisement::create([
             'user_id'       =>  Auth::user()->id,
             'title'         =>  $request->input('title'),
-            'description'   =>  $request->input('description')
+            'description'   =>  $request->input('description'),
+            'money'         =>  0
         ]);
     }
 
     public function approveAdvertisement()
     {
-
+        $add = Advertisement::where('approved',0)->where('paid',0)->get();
+        dd($add);
     }
 
-    public function approvedAdvertisement()
+    public function approvedAdvertisement(Request $request)
     {
-
+        $add = Advertisement::findorfail($request->input('id'));
+        if($request->input('flag'))
+        {
+            if($request->input('money')<=0)
+            {
+                //send error(money can not be 0 or negative)
+            }
+            else
+            {
+                $add->update([
+                   'money'  =>  $request->input('money'),
+                    'approved'  =>  1
+                ]);
+            }
+        }
+        else
+        {
+            $add->update([
+               'approved'   =>  0
+            ]);
+        }
     }
 
     public function getOffer()
@@ -163,15 +186,7 @@ class ShopController extends Controller
     }
 
 
-    public function approveOffer()
-    {
 
-    }
-
-    public function approvedOffer()
-    {
-
-    }
     public function getShop()
     {
         $shops = User::latest('created_at')->where('added',0)->get();

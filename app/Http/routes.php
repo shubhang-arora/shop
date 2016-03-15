@@ -33,8 +33,7 @@ Route::post('admin/approve/advertisement','ShopController@approvedAdvertisement'
 //Offer routes...
 Route::get('add/offer','ShopController@getOffer');
 Route::post('add/offer','ShopController@postOffer');
-Route::get('admin/approve/offer','ShopController@approveOffer');
-Route::post('admin/approve/offer','ShopController@approvedOffer');
+
 
 // Add Shop route...
 Route::get('add-shop','ShopController@getShop');
