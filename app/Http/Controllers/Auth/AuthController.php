@@ -52,7 +52,8 @@ class AuthController extends Controller
             'phone' =>  'required|min:10|max:10',
             'description'   =>  'required',
             'password' => 'required|min:6|confirmed',
-            'categories'    =>  'required'
+            'categories'    =>  'required',
+            'g-recaptcha-response' => 'required|recaptcha',
         ]);
     }
 

@@ -11,7 +11,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdvertiseRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpKernel\EventListener\AddRequestFormatsListener;
 
 class ShopController extends Controller
 {
@@ -19,7 +21,7 @@ class ShopController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('isAdmin',['only' =>  ['getAdvertise','postAdvertise']]);
+        $this->middleware('isAdmin',['only' =>  ['approveAdvertisement','approvedAdvertisement']]);
     }
     /**
      * Display a listing of the resource.
@@ -99,23 +101,53 @@ class ShopController extends Controller
 
     public function getAdvertise()
     {
-        $shops = User::lists('shop_name','id');
         return view('Shop.advertise',compact('shops'));
     }
 
     public function postAdvertise(AdvertiseRequest $request)
     {
         Advertisement::create([
-            'user_id'       =>  $request->input('shop_id'),
+            'user_id'       =>  Auth::user()->id,
             'title'         =>  $request->input('title'),
             'description'   =>  $request->input('description'),
-            'money'         =>  $request->input('money')
+            'money'         =>  0
         ]);
+    }
+
+    public function approveAdvertisement()
+    {
+        $add = Advertisement::where('approved',0)->where('paid',0)->get();
+        dd($add);
+    }
+
+    public function approvedAdvertisement(Request $request)
+    {
+        $add = Advertisement::findorfail($request->input('id'));
+        if($request->input('flag'))
+        {
+            if($request->input('money')<=0)
+            {
+                //send error(money can not be 0 or negative)
+            }
+            else
+            {
+                $add->update([
+                   'money'  =>  $request->input('money'),
+                    'approved'  =>  1
+                ]);
+            }
+        }
+        else
+        {
+            $add->update([
+               'approved'   =>  0
+            ]);
+        }
     }
 
     public function getOffer()
     {
-        $shops = User::lists('shop_name','id');
+
         $cities = City::lists('name','id');
         return view('Shop.offer',compact('shops','cities'));
     }
@@ -123,7 +155,7 @@ class ShopController extends Controller
     public function postOffer(Request $request)
     {
       $offer =   Offer::create([
-            'user_id'       =>  $request->input('shop_id'),
+            'user_id'       =>  Auth::user()->id,
             'title'         =>  $request->input('title'),
             'description'   =>  $request->input('description'),
             'start_date'    =>  $request->input('start_date'),
@@ -154,6 +186,7 @@ class ShopController extends Controller
     }
 
 
+
     public function getShop()
     {
         $shops = User::latest('created_at')->where('added',0)->get();
@@ -164,7 +197,7 @@ class ShopController extends Controller
     {
         $shop = User::find($request->input('id'));
         $shop = $shop->update([
-           'added'  =>  1
+            'added'  =>  1
         ]);
     }
 
