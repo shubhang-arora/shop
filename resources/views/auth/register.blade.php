@@ -96,23 +96,16 @@
                             <li class="text-info">{!! Form::password('password',null) !!}</li>
                         </ul>
 
-    {!! Form::label('password','Password') !!}
-    {!! Form::password('password',null) !!}
-
-    {!! Form::label('password_confirmation','Confirm Password') !!}
-    {!! Form::password('password_confirmation',null) !!}
-
-    {!! Recaptcha::render() !!}
-    <div>
-        <button type="submit">Register</button>
                         <ul>
                             <li class="text-info">{!! Form::label('password_confirmation','Confirm Password') !!}</li>
                             <li class="text-info">{!! Form::password('password_confirmation',null) !!}</li>
                         </ul>
-                            <div>
-                                <button type="submit">Register</button>
-                            </div>
-                            {!! Form::close() !!}
+
+                        {!! Recaptcha::render() !!}
+                        <div>
+                            <button type="submit">Register</button>
+                        </div>
+                        {!! Form::close() !!}
                     </div>
                 </div>
                 <div class="reg-right">
