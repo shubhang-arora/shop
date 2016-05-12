@@ -52,9 +52,7 @@ class AuthController extends Controller
             'zipcode'                => 'required',
             'phone'                 =>  'required|min:10|max:10',
             'description'           =>  'required',
-            'password'              =>  'required|min:6|confirmed',
-            'categories'            =>  'required',
-            'g-recaptcha-response'  =>  'required|recaptcha',
+            'password'              =>  'required|min:6|confirmed'
         ]);
     }
 
@@ -64,8 +62,9 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
+    protected function create(array $data,$premium_shop)
     {
+
         $users =  User::create([
             'shop_name' => $data['shop_name'],
             'user_name' => $data['user_name'],
@@ -74,7 +73,7 @@ class AuthController extends Controller
             'phone'  =>  $data['phone'],
             'zipcode'   =>  $data['zipcode'],
             'description'  =>  $data['description'],
-            'premium_shop'  => $data['premium_shop'],
+            'premium_shop'  => $premium_shop,
             'password' => bcrypt($data['password']),
         ]);
         $this->syncCategories($users, $data['categories']);
