@@ -53,7 +53,7 @@
 
                         <ul>
                             <li class="text-info">{!! Form::label('categories','Category') !!}</li>
-                            <li class="text-info">{!! Form::select('categories[]',[/*$categories*/],null,['class'=>'required-item','id'=>'tag_list','aria-required'=>'true','multiple']) !!}</li>
+                            <li class="text-info">{!! Form::select('categories[]',$categories,null,['class'=>'required-item','id'=>'tag_list','aria-required'=>'true','multiple']) !!}</li>
                         </ul>
 
                         <ul>
@@ -68,12 +68,17 @@
 
                         <ul>
                             <li class="text-info">{!! Form::label('city','City') !!}</li>
-                            <li class="text-info">{!! Form::text('city',null) !!}</li>
+                            <li class="text-info">{!! Form::select('city',$cities,null) !!}</li>
                         </ul>
 
                         <ul>
                             <li class="text-info">{!! Form::label('state','State') !!}</li>
-                            <li class="text-info">{!! Form::text('state',null) !!}</li>
+                            <li class="text-info">{!! Form::select('state',$states,null) !!}</li>
+                        </ul>
+
+                        <ul>
+                            <li class="text-info">{!! Form::label('zipcode','Zipcode:') !!}</li>
+                            <li class="text-info">{!! Form::select('zipcode',$zipcodes,null) !!}</li>
                         </ul>
 
                         <ul>

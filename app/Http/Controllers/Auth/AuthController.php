@@ -43,17 +43,18 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'shop_name' => 'required|max:255',
-            'user_name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'location'  =>  'required',
-            'city'  =>  'required',
-            'state' =>  'required',
-            'phone' =>  'required|min:10|max:10',
-            'description'   =>  'required',
-            'password' => 'required|min:6|confirmed',
-            'categories'    =>  'required',
-            'g-recaptcha-response' => 'required|recaptcha',
+            'shop_name'             =>      'required|max:255',
+            'user_name'             =>      'required|max:255',
+            'email'                 =>      'required|email|max:255|unique:users',
+            'location'              =>      'required',
+            'city'                      =>   'required',
+            'state'                 =>  'required',
+            'zipcode'                => 'required',
+            'phone'                 =>  'required|min:10|max:10',
+            'description'           =>  'required',
+            'password'              =>  'required|min:6|confirmed',
+            'categories'            =>  'required',
+            'g-recaptcha-response'  =>  'required|recaptcha',
         ]);
     }
 
@@ -63,18 +64,17 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data,$premium_shop)
+    protected function create(array $data)
     {
         $users =  User::create([
             'shop_name' => $data['shop_name'],
             'user_name' => $data['user_name'],
             'email' => $data['email'],
             'location'  =>  $data['location'],
-            'city'  =>  $data['city'],
-            'state'  =>  $data['state'],
             'phone'  =>  $data['phone'],
+            'zipcode'   =>  $data['zipcode'],
             'description'  =>  $data['description'],
-            'premium_shop'  => $premium_shop,
+            'premium_shop'  => $data['premium_shop'],
             'password' => bcrypt($data['password']),
         ]);
         $this->syncCategories($users, $data['categories']);
