@@ -71,7 +71,7 @@ class AuthController extends Controller
             'email' => $data['email'],
             'location'  =>  $data['location'],
             'phone'  =>  $data['phone'],
-            'zipcode'   =>  $data['zipcode'],
+            'zipcode_id'   =>  $data['zipcode'],
             'description'  =>  $data['description'],
             'premium_shop'  => $premium_shop,
             'password' => bcrypt($data['password']),
