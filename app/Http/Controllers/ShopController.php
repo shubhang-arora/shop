@@ -21,7 +21,7 @@ class ShopController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('isAdmin',['only' =>  ['approveAdvertisement','approvedAdvertisement']]);
+        $this->middleware('isAdmin',['only' =>  ['approveAdvertisement','approvedAdvertisement','getShop','postShop']]);
     }
     /**
      * Display a listing of the resource.

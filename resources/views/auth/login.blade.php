@@ -46,7 +46,7 @@
                         {!! csrf_field() !!}
                         <div>
                             <span>Email Address<label>*</label></span>
-                            <input type="text" name="shop_name" value="{{ old('email') }}">
+                            <input type="text" name="email" value="{{ old('email') }}">
                         </div>
                         <div>
                             <span>Password<label>*</label></span>
