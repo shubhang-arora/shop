@@ -38,3 +38,5 @@ Route::post('add/offer','ShopController@postOffer');
 // Add Shop route...
 Route::get('add-shop','ShopController@getShop');
 Route::post('add-shop','ShopController@postShop');
+
+Route::get('shops/{id}','ShopController@show');

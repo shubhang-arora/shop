@@ -62,7 +62,7 @@ class ShopController extends Controller
      */
     public function show($id)
     {
-        //
+        dd(User::findorFail($id));
     }
 
     /**
@@ -189,8 +189,8 @@ class ShopController extends Controller
 
     public function getShop()
     {
-        $shops = User::latest('created_at')->where('added',0)->get();
-        dd($shops);
+        $shops = User::latest('created_at')->where('added',0)->where('deleted',0)->get();
+        return view('Shop.add-shop',compact('shops'));
     }
 
     public function postShop(Request $request)
