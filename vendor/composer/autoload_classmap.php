@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddColumnToShopTable' => $baseDir . '/database/migrations/2016_05_16_181903_add_column_to_shop_table.php',
     'AddForeignKeyInShopTable' => $baseDir . '/database/migrations/2016_05_16_155821_add_foreign_key_in_shop_table.php',
     'CreateAddvertisementTable' => $baseDir . '/database/migrations/2016_05_16_154636_create_addvertisement_table.php',
     'CreateCategoriesTable' => $baseDir . '/database/migrations/2016_05_16_154946_create_categories_table.php',

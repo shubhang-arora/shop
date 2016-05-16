@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Advertisement;
 use App\City;
 use App\Offer;
+use App\Shop;
+use App\State;
 use App\User;
+use App\Zipcode;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -40,7 +43,10 @@ class ShopController extends Controller
      */
     public function create()
     {
-        //
+        $zipcodes = Zipcode::lists('code','id');
+        $cities = City::lists('city_name','id');
+        $states = State::lists('state_name','id');
+        return view('Shop.create',compact('zipcodes','cities','states'));
     }
 
     /**
@@ -49,9 +55,21 @@ class ShopController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\ShopCreateRequest $request)
     {
-        //
+        $premium_shop = 0;
+        if($request->has('premium_shop'))
+        {
+            $premium_shop = 1;
+        }
+        $shop = Auth::user()->shop()->create([
+           'shop_name'  =>  $request->input('name'),
+            'description'  =>  $request->input('description'),
+            'amount'    =>  $request->input('amount'),
+            'zipcode_id'    =>  $request->input('zipcode'),
+            'location'  =>  $request->input('location'),
+            'premium_shop'  =>  $premium_shop
+        ]);
     }
 
     /**
@@ -147,7 +165,6 @@ class ShopController extends Controller
 
     public function getOffer()
     {
-
         $cities = City::lists('name','id');
         return view('Shop.offer',compact('shops','cities'));
     }
@@ -155,47 +172,27 @@ class ShopController extends Controller
     public function postOffer(Request $request)
     {
       $offer =   Offer::create([
-            'user_id'       =>  Auth::user()->id,
+            'shop_id'       =>  Auth::user()->shop()->id,
             'title'         =>  $request->input('title'),
             'description'   =>  $request->input('description'),
             'start_date'    =>  $request->input('start_date'),
             'end_date'    =>  $request->input('end_date'),
             'premium_offer' =>  $request->input('premium_offer')
         ]);
-        if($request->input('city_id')==-1)
-        {
-            $cities = City::all();
-            foreach($cities as $city)
-            {
-                DB::table('city_offer')->create([
-                     'city_id'  =>  $city->id,
-                    'offer_id'  => $offer->id
-                    ]);
-            }
-        }
-        else
-        {
-            foreach($request->input('city_id') as $city)
-            {
-                DB::table('city_offer')->create([
-                    'city_id'  =>  $city,
-                    'offer_id'  => $offer->id
-                ]);
-            }
-        }
+       
     }
 
 
 
     public function getShop()
     {
-        $shops = User::latest('created_at')->where('added',0)->where('deleted',0)->get();
+        $shops = Shop::latest('created_at')->where('added',0)->where('deleted',0)->get();
         return view('Shop.add-shop',compact('shops'));
     }
 
     public function postShop(Request $request)
     {
-        $shop = User::find($request->input('id'));
+        $shop = Shop::find($request->input('id'));
         $shop = $shop->update([
             'added'  =>  1
         ]);
