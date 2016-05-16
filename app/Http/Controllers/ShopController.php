@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Advertisement;
+use App\Category;
 use App\City;
 use App\Offer;
+use App\State;
 use App\User;
+use App\Zipcode;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -20,7 +23,6 @@ class ShopController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
         $this->middleware('isAdmin',['only' =>  ['approveAdvertisement','approvedAdvertisement','getShop','postShop']]);
     }
     /**
@@ -40,7 +42,11 @@ class ShopController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::lists('name','name');
+        $cities = City::lists('name','id');
+        $states = State::lists('name','id');
+        $zipcodes = Zipcode::lists('code','id');
+        return view('Shop.register',compact('categories','cities','states','zipcodes'));
     }
 
     /**

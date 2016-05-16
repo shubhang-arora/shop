@@ -14,9 +14,9 @@
             <a class="product_name" href="{{action('ShopController@show',$shop->id)}}">{{$shop->shop_name}}</a>
             <p><a class="item_add" href="#"><i></i> <span class="item_price">Owner : {{$shop->user_name}}</span></a></p>
             <br><br>
-            <span class="glyphicon glyphicon-ok" id="add" aria-hidden="true" style="font-size: larger"></span>
+            <a href="#!"><i class="glyphicon glyphicon-ok text-success" id="add" aria-hidden="true" style="font-size: larger"></i>
             &nbsp;
-            <span class="glyphicon glyphicon-remove" id="remove" aria-hidden="true" style="font-size: larger"></span>
+            <i class="glyphicon glyphicon-remove text-danger" id="remove" aria-hidden="true" style="font-size: larger"></i></a>
         </div>
             @if(($key+1)%3==0)
                 <div class="clearfix"></div>
@@ -27,5 +27,5 @@
 
 @endsection
 @section('head')
-    <title>Add Shop - Shop</title>
+    <title>Add Shop - Businessway</title>
 @endsection

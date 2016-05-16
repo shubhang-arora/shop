@@ -63,5 +63,5 @@
     </div>
 @endsection
 @section('head')
-    <title>Login - Shop</title>
+    <title>Login - Businessway</title>
 @endsection

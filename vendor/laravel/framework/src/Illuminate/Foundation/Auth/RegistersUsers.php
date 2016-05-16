@@ -20,11 +20,7 @@ trait RegistersUsers
      */
     public function getRegister()
     {
-        $categories = Category::lists('name','name');
-        $cities = City::lists('name','id');
-        $states = State::lists('name','id');
-        $zipcodes = Zipcode::lists('code','id');
-        return view('auth.register',compact('categories','cities','states','zipcodes'));
+        return view('auth.register');
     }
 
     /**

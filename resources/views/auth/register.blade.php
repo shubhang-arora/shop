@@ -42,19 +42,10 @@
                             {!! Form::open(['action'=>'Auth\AuthController@getRegister']) !!}
                             {!! csrf_field() !!}
                         <ul>
-                            <li class="text-info">{!! Form::label('shop_name','Shop Name:') !!}</li>
-                            <li class="text-info">{!! Form::text('shop_name',null) !!}</li>
-                        </ul>
-
-                        <ul>
                             <li class="text-info">{!! Form::label('user_name','Your Name:') !!}</li>
                             <li class="text-info">{!! Form::text('user_name',null) !!}</li>
                         </ul>
 
-                        <ul>
-                            <li class="text-info">{!! Form::label('categories','Category') !!}</li>
-                            <li class="text-info">{!! Form::select('categories[]',$categories,null,['class'=>'required-item','id'=>'tag_list','aria-required'=>'true','multiple']) !!}</li>
-                        </ul>
 
                         <ul>
                             <li class="text-info">{!! Form::label('email','Email') !!}</li>
@@ -62,39 +53,8 @@
                         </ul>
 
                         <ul>
-                            <li class="text-info">{!! Form::label('location','Location') !!}</li>
-                            <li class="text-info">{!! Form::text('location',null) !!}</li>
-                        </ul>
-
-                        <ul>
-                            <li class="text-info">{!! Form::label('city','City') !!}</li>
-                            <li class="text-info">{!! Form::select('city',$cities,null) !!}</li>
-                        </ul>
-
-                        <ul>
-                            <li class="text-info">{!! Form::label('state','State') !!}</li>
-                            <li class="text-info">{!! Form::select('state',$states,null) !!}</li>
-                        </ul>
-
-                        <ul>
-                            <li class="text-info">{!! Form::label('zipcode','Zipcode:') !!}</li>
-                            <li class="text-info">{!! Form::select('zipcode',$zipcodes,null) !!}</li>
-                        </ul>
-
-
-                        <ul>
                             <li class="text-info">{!! Form::label('phone','Contact') !!}</li>
                             <li class="text-info">{!! Form::text('phone',null) !!}</li>
-                        </ul>
-
-                        <ul>
-                            <li class="text-info">{!! Form::label('premium_shop','Premium Shop') !!}</li>
-                            <li class="text-info">{!! Form::checkbox('premium_shop',null) !!}</li>
-                        </ul>
-
-                        <ul>
-                            <li class="text-info">{!! Form::label('description','Description') !!}</li>
-                            <li class="text-info">{!! Form::textarea('description',null) !!}</li>
                         </ul>
 
                         <ul>
@@ -133,5 +93,5 @@
 @endsection
 
 @section('head')
-    <title>Register - Shop</title>
+    <title>Register - Businessway</title>
 @endsection
