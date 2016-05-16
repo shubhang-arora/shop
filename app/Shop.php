@@ -21,14 +21,9 @@ class Shop extends Model
         return $this->hasMany('App\Offer');
     }
 
-    public function state()
+    public function zipcode()
     {
-        return $this->belongsTo('App\State');
-    }
-
-    public function city()
-    {
-        return $this->belongsTo('App\City');
+        return $this->belongsTo('App\Zipcode');
     }
 
     public function user()

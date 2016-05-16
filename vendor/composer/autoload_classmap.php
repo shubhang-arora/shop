@@ -10,6 +10,7 @@ return array(
     'CreateAddvertisementTable' => $baseDir . '/database/migrations/2016_05_16_154636_create_addvertisement_table.php',
     'CreateCategoriesTable' => $baseDir . '/database/migrations/2016_05_16_154946_create_categories_table.php',
     'CreateCityTable' => $baseDir . '/database/migrations/2016_05_16_154041_create_city_table.php',
+    'CreateOfferTable' => $baseDir . '/database/migrations/2016_05_16_161426_create_offer_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateShopTable' => $baseDir . '/database/migrations/2016_05_16_153609_create_shop_table.php',
     'CreateStateTable' => $baseDir . '/database/migrations/2016_05_16_154005_create_state_table.php',
