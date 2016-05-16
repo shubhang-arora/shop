@@ -39,7 +39,7 @@
                         <div class="reg">
                             <p>Welcome, please enter the following details to continue.</p>
                             <p>If you have previously registered with us, <a href="#">click here</a></p>
-                            {!! Form::open(['action'=>'Auth\AuthController@getRegister']) !!}
+                            {!! Form::open(['action'=>'ShopController@store']) !!}
                             {!! csrf_field() !!}
                             <ul>
                                 <li class="text-info">{!! Form::label('shop_name','Shop Name:') !!}</li>
@@ -87,7 +87,7 @@
                                 <li class="text-info">{!! Form::password('password',null) !!}</li>
                             </ul>
 
-                            {!! Recaptcha::render() !!}
+
                             <div>
                                 <button type="submit">Register</button>
                             </div>

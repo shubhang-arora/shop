@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Advertisement;
-use App\Category;
 use App\City;
 use App\Offer;
+use App\Shop;
 use App\State;
 use App\User;
 use App\Zipcode;
 use Illuminate\Http\Request;
-
+use App\Category;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdvertiseRequest;
@@ -44,8 +44,8 @@ class ShopController extends Controller
     public function create()
     {
         $categories = Category::lists('name','name');
-        $cities = City::lists('name','id');
-        $states = State::lists('name','id');
+        $cities = City::lists('city_name','id');
+        $states = State::lists('state_name','id');
         $zipcodes = Zipcode::lists('code','id');
         return view('Shop.register',compact('categories','cities','states','zipcodes'));
     }
@@ -58,19 +58,33 @@ class ShopController extends Controller
      */
     public function store(Requests\ShopCreateRequest $request)
     {
-        $premium_shop = 0;
-        if($request->has('premium_shop'))
+        $user = Auth::user();
+        $password = $request->input('password');
+        if(Auth::validate(array('user_name' => $user->user_name, 'password' => $password)))
         {
-            $premium_shop = 1;
+            $premium_shop = 0;
+            if($request->has('premium_shop'))
+            {
+                $premium_shop = 1;
+            }
+            $shop = Auth::user()->shop()->create([
+                'shop_name'  =>  $request->input('shop_name'),
+                'description'  =>  $request->input('description'),
+                'zipcode_id'    =>  $request->input('zipcode'),
+                'location'  =>  $request->input('location'),
+                'premium_shop'  =>  $premium_shop,
+
+            ]);
+
+            return redirect('/');
         }
-        $shop = Auth::user()->shop()->create([
-           'shop_name'  =>  $request->input('name'),
-            'description'  =>  $request->input('description'),
-            'amount'    =>  $request->input('amount'),
-            'zipcode_id'    =>  $request->input('zipcode'),
-            'location'  =>  $request->input('location'),
-            'premium_shop'  =>  $premium_shop
-        ]);
+        else
+        {
+            return redirect()->back();
+        }
+
+
+
     }
 
     /**

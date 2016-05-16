@@ -6,6 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shop extends Model
 {
+
+    protected $fillable = [
+        'shop_name',
+        'location',
+        'zipcode_id',
+        'premium_shop',
+        'description',
+        'added',
+        'deleted',
+        'amount',
+        'user_id'
+    ];
+
     public function categories()
     {
         return $this->belongsToMany('App\Category');
