@@ -47,13 +47,8 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'shop_name'             =>      'required|max:255',
             'user_name'             =>      'required|max:255',
             'email'                 =>      'required|email|max:255|unique:users',
-            'location'              =>      'required',
-            'city'                      =>   'required',
-            'state'                 =>  'required',
-            'zipcode'                => 'required',
             'phone'                 =>  'required|min:10|max:10',
             'description'           =>  'required',
             'password'              =>  'required|min:6|confirmed'
@@ -70,32 +65,15 @@ class AuthController extends Controller
     {
 
         $users =  User::create([
-            'shop_name' => $data['shop_name'],
             'user_name' => $data['user_name'],
             'email' => $data['email'],
-            'location'  =>  $data['location'],
-            'phone'  =>  $data['phone'],
-            'zipcode_id'   =>  $data['zipcode'],
             'description'  =>  $data['description'],
             'premium_shop'  => $premium_shop,
             'password' => bcrypt($data['password']),
         ]);
-        $this->syncCategories($users, $data['categories']);
+
         return $users;
     }
 
-    private function syncCategories(User $users , $categories)
-    {
 
-        $users->categories()->detach();
-
-        foreach ( $categories as $category ) {
-            $newCategories=Category::firstOrCreate([
-                'name'          =>      $category,
-            ]);
-
-            $users->categories()->attach($newCategories);
-
-        }
-    }
 }
