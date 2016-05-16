@@ -26,7 +26,7 @@ trait RegistersUsers
     /**
      * Handle a registration request for the application.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function postRegister(Request $request)
@@ -39,15 +39,8 @@ trait RegistersUsers
                 $request, $validator
             );
         }
-        if($request->has('premium_shop'))
-        {
-            Auth::login($this->create($request->all(),1));
-        }
-        else
-        {
-            Auth::login($this->create($request->all(),0));
-        }
 
+        Auth::login($this->create($request->all()));
 
         return redirect($this->redirectPath());
     }

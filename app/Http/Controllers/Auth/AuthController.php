@@ -50,7 +50,6 @@ class AuthController extends Controller
             'user_name'             =>      'required|max:255',
             'email'                 =>      'required|email|max:255|unique:users',
             'phone'                 =>  'required|min:10|max:10',
-            'description'           =>  'required',
             'password'              =>  'required|min:6|confirmed'
         ]);
     }
@@ -61,14 +60,12 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data,$premium_shop)
+    protected function create(array $data)
     {
-
         $users =  User::create([
             'user_name' => $data['user_name'],
             'email' => $data['email'],
-            'description'  =>  $data['description'],
-            'premium_shop'  => $premium_shop,
+            'phone'  =>  $data['phone'],
             'password' => bcrypt($data['password']),
         ]);
 
