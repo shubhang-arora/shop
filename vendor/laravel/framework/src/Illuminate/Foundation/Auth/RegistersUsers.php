@@ -43,6 +43,6 @@ trait RegistersUsers
         Auth::login($this->create($request->all()));
 
 
-        return redirect('shops/register');
+        return redirect('shop/register');
     }
 }
