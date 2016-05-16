@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignKeyToCategoryUserTable extends Migration
+class CreateZipcodeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,17 +12,18 @@ class AddForeignKeyToCategoryUserTable extends Migration
      */
     public function up()
     {
-        Schema::table('city_offer', function (Blueprint $table) {
+        Schema::create('zipcodes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('code');
+            $table->integer('city_id')->unsigned();
+            $table->timestamps();
+
+
+
             $table->foreign('city_id')
                 ->references('id')
                 ->on('cities')
                 ->onDelete('cascade');
-
-            $table->foreign('offer_id')
-                ->references('id')
-                ->on('offers')
-                ->onDelete('cascade');
-
         });
     }
 
@@ -33,8 +34,6 @@ class AddForeignKeyToCategoryUserTable extends Migration
      */
     public function down()
     {
-        Schema::table('category_user', function (Blueprint $table) {
-            //
-        });
+        Schema::drop('zipcodes');
     }
 }
