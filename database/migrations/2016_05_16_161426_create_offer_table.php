@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateZipcodesTable extends Migration
+class CreateOfferTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,17 +12,20 @@ class CreateZipcodesTable extends Migration
      */
     public function up()
     {
-        Schema::create('zipcodes', function (Blueprint $table) {
+        Schema::create('offers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('city_id')->unsigned();
-            $table->string('code');
-            $table->string('name');
+            $table->integer('shop_id')->unsigned();
+            $table->string('title');
+            $table->text('description');
+            $table->integer('premium_offer');
+            $table->timestamp('start_date');
+            $table->timestamp('end_date');
             $table->timestamps();
 
 
-            $table->foreign('city_id')
+            $table->foreign('shop_id')
                 ->references('id')
-                ->on('cities')
+                ->on('shops')
                 ->onDelete('cascade');
         });
     }
@@ -34,6 +37,6 @@ class CreateZipcodesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('zipcodes');
+        Schema::drop('offers');
     }
 }

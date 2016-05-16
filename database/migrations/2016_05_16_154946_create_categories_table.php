@@ -18,22 +18,21 @@ class CreateCategoriesTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('category_user', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned()->index();
+        Schema::create('category_shop', function (Blueprint $table) {
+            $table->integer('shop_id')->unsigned();
+            $table->integer('category_id')->unsigned();
+            $table->timestamps();
 
-            $table->foreign('user_id')
+            $table->foreign('shop_id')
                 ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
-
-            $table->integer('category_id')->unsigned()->index();
+                ->on('shops')
+                ->ondelete('cascade');
 
             $table->foreign('category_id')
                 ->references('id')
                 ->on('categories')
-                ->onDelete('cascade');
+                ->ondelete('cascade');
 
-            $table->timestamps();
         });
     }
 

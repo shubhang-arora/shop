@@ -11,10 +11,6 @@ class State extends Model
         return $this->hasMany('App\City');
     }
 
-    public function users()
-    {
-        return $this->hasMany('App\User');
-    }
 
 
 }

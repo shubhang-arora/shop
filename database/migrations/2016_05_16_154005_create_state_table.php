@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDeletedColumn extends Migration
+class CreateStateTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,10 @@ class CreateDeletedColumn extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('deleted')->default(0);
+        Schema::create('states', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('state_name');
+            $table->timestamps();
         });
     }
 
@@ -24,8 +26,6 @@ class CreateDeletedColumn extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('deleted');
-        });
+        Schema::drop('states');
     }
 }

@@ -11,10 +11,7 @@ class City extends Model
         return $this->belongsTo('App\State');
     }
 
-    public function users()
-    {
-        return $this->hasMany('App\User');
-    }
+
 
     public function zipcodes()
     {

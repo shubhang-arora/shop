@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAdminColumnToUsersTable extends Migration
+class AddForeignKeyInShopTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,11 @@ class AddAdminColumnToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('admin')->default(0);
+        Schema::table('shops', function (Blueprint $table) {
+            $table->foreign('zipcode_id')
+                ->references('id')
+                ->on('zipcodes')
+                ->onDelete('cascade');
         });
     }
 
@@ -24,8 +27,8 @@ class AddAdminColumnToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('admin');
+        Schema::table('shops', function (Blueprint $table) {
+            //
         });
     }
 }

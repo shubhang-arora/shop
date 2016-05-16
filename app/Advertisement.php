@@ -14,8 +14,8 @@ class Advertisement extends Model
         'money'
     ];
 
-    public function user()
+    public function shop()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Shop');
     }
 }

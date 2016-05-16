@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStatesTable extends Migration
+class AddColumnToShopTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,9 @@ class CreateStatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('states', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->timestamps();
+        Schema::table('shops', function (Blueprint $table) {
+            $table->integer('added')->default(0);
+            $table->integer('deleted')->default(0);
         });
     }
 
@@ -26,6 +25,8 @@ class CreateStatesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('states');
+        Schema::table('shops', function (Blueprint $table) {
+            //
+        });
     }
 }

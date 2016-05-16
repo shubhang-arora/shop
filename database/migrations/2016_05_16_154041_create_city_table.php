@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOffersTable extends Migration
+class CreateCityTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,18 @@ class CreateOffersTable extends Migration
      */
     public function up()
     {
-        Schema::create('offers', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('description');
-            $table->integer('premium_offer');
-            $table->integer('city_id')->unsigned();
-            $table->timestamp('start_date');
-            $table->timestamp('end_date');
+            $table->integer('state_id')->unsigned();
+            $table->string('city_name');
             $table->timestamps();
+
+
+
+            $table->foreign('state_id')
+                ->references('id')
+                ->on('states')
+                ->onDelete('cascade');
         });
     }
 
@@ -31,6 +34,6 @@ class CreateOffersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('offers');
+        Schema::drop('cities');
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdvertisementsTable extends Migration
+class CreateShopTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,15 @@ class CreateAdvertisementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('advertisements', function (Blueprint $table) {
+        Schema::create('shops', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('title');
+            $table->string('shop_name');
+            $table->integer('amount');
+            $table->string('location');
+            $table->integer('zipcode_id')->unsigned();
+            $table->integer('premium_shop')->default(0);
             $table->text('description');
-            $table->integer('money');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreateAdvertisementsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('advertisements');
+        Schema::drop('shops');
     }
 }
