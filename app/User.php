@@ -29,16 +29,10 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $fillable = [
-        'shop_name',
         'email',
         'password',
         'user_name',
         'phone',
-        'location',
-        'zipcode_id',
-        'description',
-        'premium_shop',
-        'amount_paid',
     ];
 
     /**
@@ -48,28 +42,8 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
-    public function categories()
+    public function shop()
     {
-        return $this->belongsToMany('App\Category');
-    }
-
-    public function advertisements()
-    {
-        return $this->hasMany('App\Advertisement');
-    }
-
-    public function offers()
-    {
-        return $this->hasMany('App\Offer');
-    }
-
-    public function state()
-    {
-        return $this->belongsTo('App\State');
-    }
-
-    public function city()
-    {
-        return $this->belongsTo('App\City');
+        return $this->hasOne('App\Shop');
     }
 }

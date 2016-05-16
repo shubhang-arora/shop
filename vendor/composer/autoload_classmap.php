@@ -18,6 +18,7 @@ return array(
     'CreateOffersTable' => $baseDir . '/database/migrations/2016_03_02_181823_create_offers_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePivotTableCityOffer' => $baseDir . '/database/migrations/2016_03_02_190229_create_pivot_table_city_offer.php',
+    'CreateShopTable' => $baseDir . '/database/migrations/2016_05_16_152523_create_shop_table.php',
     'CreateStatesTable' => $baseDir . '/database/migrations/2016_03_02_182532_create_states_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'CreateZipcodesTable' => $baseDir . '/database/migrations/2016_03_14_151034_create_zipcodes_table.php',

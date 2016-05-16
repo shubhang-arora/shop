@@ -11,9 +11,9 @@ class State extends Model
         return $this->hasMany('App\City');
     }
 
-    public function users()
+    public function shops()
     {
-        return $this->hasMany('App\User');
+        return $this->hasMany('App\Shop');
     }
 
 

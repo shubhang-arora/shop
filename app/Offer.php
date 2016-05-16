@@ -16,8 +16,8 @@ class Offer extends Model
         'end_date'
     ];
 
-    public function user()
+    public function shop()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Shop');
     }
 }

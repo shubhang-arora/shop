@@ -10,9 +10,9 @@ class Category extends Model
         'name'
     ];
 
-    public function users()
+    public function shops()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\Shop');
     }
 
 }
