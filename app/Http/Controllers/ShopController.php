@@ -58,6 +58,7 @@ class ShopController extends Controller
      */
     public function store(Requests\ShopCreateRequest $request)
     {
+
         $user = Auth::user();
         $password = $request->input('password');
         if(Auth::validate(array('user_name' => $user->user_name, 'password' => $password)))
@@ -75,16 +76,25 @@ class ShopController extends Controller
                 'premium_shop'  =>  $premium_shop,
 
             ]);
-
+            $this->syncCategories($shop, $request->input('categories'));
             return redirect('/');
         }
         else
         {
             return redirect()->back();
         }
+    }
 
+    private function syncCategories(Shop $shops, $categories)
+    {
 
-
+        $shops->categories()->detach();
+        foreach ($categories as $category) {
+            $newCategories = Category::firstOrCreate([
+                'name' => $category,
+            ]);
+            $shops->categories()->attach($newCategories);
+        }
     }
 
     /**
