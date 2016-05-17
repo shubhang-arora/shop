@@ -25,12 +25,12 @@ class ShopCreateRequest extends Request
     {
         return [
             'shop_name'     =>  'required',
-            'city_id'       =>  'required',
-            'state_id'      =>  'required',
-            'zipcode_id'    => 'required',
+            'city'       =>  'required',
+            'state'      =>  'required',
+            'zipcode'    => 'required',
             'location'      =>  'required',
             'description'   =>  'required',
-            'premium_shop'  =>   'required'
+            'password'      =>  'required'
         ];
     }
 }
