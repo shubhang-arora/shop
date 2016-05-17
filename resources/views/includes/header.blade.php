@@ -34,7 +34,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <div class="logo">
-                        <h1><a href="{{url('/')}}"><span>E</span> -Shop</a></h1>
+                        <a href="{{url('/')}}"><img src="{{asset('logo.png')}}" class="img-responsive" alt="Logo"></a>
                     </div>
                 </div>
                 <!--/.navbar-header-->

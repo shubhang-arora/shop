@@ -1,6 +1,6 @@
-$("").click(function()
+$(".add-remove").click(function()
 {   var id = $(this).attr("id");
-
+    console.log(parseInt(id));
     $.ajax({
         url : '/add-shop',
         type: "post",

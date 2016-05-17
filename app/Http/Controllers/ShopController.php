@@ -6,6 +6,7 @@ use App\Advertisement;
 use App\Category;
 use App\City;
 use App\Offer;
+use App\Shop;
 use App\State;
 use App\User;
 use App\Zipcode;
@@ -44,8 +45,8 @@ class ShopController extends Controller
     public function create()
     {
         $categories = Category::lists('name','name');
-        $cities = City::lists('name','id');
-        $states = State::lists('name','id');
+        $cities = City::lists('city_name','id');
+        $states = State::lists('state_name','id');
         $zipcodes = Zipcode::lists('code','id');
         return view('Shop.register',compact('categories','cities','states','zipcodes'));
     }

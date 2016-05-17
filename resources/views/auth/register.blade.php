@@ -68,9 +68,7 @@
                         </ul>
 
                         {!! Recaptcha::render() !!}
-                        <div>
-                            <button type="submit">Register</button>
-                        </div>
+                        <input type="submit" value="Register">
                         {!! Form::close() !!}
                     </div>
                 </div>

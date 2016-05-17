@@ -14,9 +14,9 @@
             <a class="product_name" href="{{action('ShopController@show',$shop->id)}}">{{$shop->shop_name}}</a>
             <p><a class="item_add" href="#"><i></i> <span class="item_price">Owner : {{$shop->user_name}}</span></a></p>
             <br><br>
-            <a href="#!"><i class="glyphicon glyphicon-ok text-success" id="add" aria-hidden="true" style="font-size: larger"></i>
+            <a href="#!"><i class="glyphicon glyphicon-ok text-success add-remove" id="add{{$shop->id}}" aria-hidden="true" style="font-size: larger"></i>
             &nbsp;
-            <i class="glyphicon glyphicon-remove text-danger" id="remove" aria-hidden="true" style="font-size: larger"></i></a>
+            <i class="glyphicon glyphicon-remove text-danger add-remove" id="remove{{$shop->id}}" aria-hidden="true" style="font-size: larger"></i></a>
         </div>
             @if(($key+1)%3==0)
                 <div class="clearfix"></div>
