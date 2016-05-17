@@ -25,6 +25,7 @@ class ShopController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('isAdmin',['only' =>  ['approveAdvertisement','approvedAdvertisement','getShop','postShop']]);
+        $this->middleware('addShop');
     }
     /**
      * Display a listing of the resource.
@@ -43,6 +44,7 @@ class ShopController extends Controller
      */
     public function create()
     {
+
         $categories = Category::lists('name','name');
         $cities = City::lists('city_name','id');
         $states = State::lists('state_name','id');
@@ -143,13 +145,15 @@ class ShopController extends Controller
         //
     }
 
+
     public function getAdvertise()
     {
-        return view('Shop.advertise',compact('shops'));
+        return view('Shop.advertise');
     }
 
     public function postAdvertise(AdvertiseRequest $request)
     {
+
         Advertisement::create([
             'user_id'       =>  Auth::user()->id,
             'title'         =>  $request->input('title'),
@@ -163,7 +167,7 @@ class ShopController extends Controller
         $add = Advertisement::where('approved',0)->where('paid',0)->get();
         dd($add);
     }
-
+    // for admin
     public function approvedAdvertisement(Request $request)
     {
         $add = Advertisement::findorfail($request->input('id'));
@@ -207,8 +211,6 @@ class ShopController extends Controller
         ]);
        
     }
-
-
 
     public function getShop()
     {

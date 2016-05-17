@@ -16,7 +16,8 @@ class addShop
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->shop->count==1)
+
+        if(Auth::user()->shop->count()>=1)
         {
             return redirect('/');
         }
