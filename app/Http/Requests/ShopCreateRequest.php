@@ -24,13 +24,14 @@ class ShopCreateRequest extends Request
     public function rules()
     {
         return [
-            'shop_name'     =>  'required',
-            'city'       =>  'required',
-            'state'      =>  'required',
-            'zipcode'    => 'required',
-            'location'      =>  'required',
-            'description'   =>  'required',
-            'password'      =>  'required'
+            'shop_name' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'zipcode' => 'required',
+            'location' => 'required',
+            'description' => 'required',
+            'password' => 'required',
+            'categories' => 'required'
         ];
     }
 }

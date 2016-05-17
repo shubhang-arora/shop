@@ -3,10 +3,16 @@
     <div class="header-top-strip">
         <div class="container">
             <div class="header-top-left">
-                <ul>
-                    <li><a href="{{url('/auth/login')}}"><span class="glyphicon glyphicon-user"> </span>Login</a></li>
-                    <li><a href="{{url('/auth/register')}}"><span class="glyphicon glyphicon-lock"> </span>Create an Account</a></li>
-                </ul>
+                @if(\Illuminate\Support\Facades\Auth::check()==false)
+                    <ul>
+                        <li><a href="{{url('/auth/login')}}"><span class="glyphicon glyphicon-user"> </span>Login</a></li>
+                        <li><a href="{{url('/auth/register')}}"><span class="glyphicon glyphicon-lock"> </span>Create an Account</a></li>
+                    </ul>
+                @else
+                    <ul>
+                        <li><a href="{{url('/auth/logout')}}"><span class="glyphicon glyphicon-log-out"> </span>Logout</a></li>
+                    </ul>
+                @endif
             </div>
             <div class="header-right">
                 <div class="cart box_1">

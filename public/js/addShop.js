@@ -1,13 +1,28 @@
-$(".add-remove").click(function()
-{   var id = $(this).attr("id");
-    console.log(parseInt(id));
+var box;
+$(document).on('click','.add-remove', function (e) {
+    var add = $(this).hasClass('add');
+    var id = $(this).attr("id");
+    box = $(this).parent().parent();
+    id = parseInt(id);
     $.ajax({
-        url : '/add-shop',
+        url: '/add-shop',
         type: "post",
-        data: {'id':$(this).attr("id"),'_token': $('input[name=_token]').val()},
-        success: function(data){
-
+        data: {'id': id, 'add': add, '_token': $('[name=_token]').attr('content')},
+        success: function (data) {
+            var alert='';
+            if(data==1){
+                alert = '<div class="alert alert-success"><a href="#" class="close" id="undo" data-dismiss="alert" aria-label="close">Undo</a><strong>Added</strong> Shop!</div>';
+            }
+            else{
+                alert = '<div class="alert alert-danger"><a href="#" class="close" id="undo" data-dismiss="alert" aria-label="close">Undo</a><strong>Deleted</strong> Shop!</div>';
+            }
+            box.slideUp();
+            box.parent().prepend(alert);
+            box.parent().find('.alert-message').delay(7000).slideUp();
         }
     })
 });
 
+$(document).on('click','#undo', function () {
+    box.slideDown();
+});

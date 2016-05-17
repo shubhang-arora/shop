@@ -55,12 +55,11 @@ class ShopController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Requests\ShopCreateRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Requests\ShopCreateRequest $request)
     {
-
         $user = Auth::user();
         $password = $request->input('password');
         if(Auth::validate(array('user_name' => $user->user_name, 'password' => $password)))
@@ -195,21 +194,31 @@ class ShopController extends Controller
 
     public function getOffer()
     {
-        $cities = City::lists('name','id');
-        return view('Shop.offer',compact('shops','cities'));
+        return view('Shop.offer');
     }
 
     public function postOffer(Request $request)
     {
-      $offer =   Offer::create([
-            'shop_id'       =>  Auth::user()->shop()->id,
-            'title'         =>  $request->input('title'),
-            'description'   =>  $request->input('description'),
-            'start_date'    =>  $request->input('start_date'),
-            'end_date'    =>  $request->input('end_date'),
-            'premium_offer' =>  $request->input('premium_offer')
+        dd(Auth::user()->shop);
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'daterange' => 'required',
         ]);
-       
+        $daterange = explode(' - ', $request->input('daterange'));
+        $premium_offer = 0;
+        if ($request->has('premium_offer')) {
+            $premium_offer = 1;
+        }
+        $offer = Offer::create([
+            'shop_id' => Auth::user()->shop()->id,
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'start_date' => $daterange[0],
+            'end_date' => $daterange[1],
+            'premium_offer' => $premium_offer
+        ]);
+
     }
 
     public function getShop()
@@ -221,9 +230,14 @@ class ShopController extends Controller
     public function postShop(Request $request)
     {
         $shop = Shop::find($request->input('id'));
-        $shop = $shop->update([
-            'added'  =>  1
-        ]);
+        $add = ($request->input('add') === 'true');
+        if ($add) {
+            $shop = $shop->update(['added' => 1]);
+            return 1;
+        } else {
+            $shop = $shop->update(['deleted' => 1]);
+            return 0;
+        }
     }
 
 }
