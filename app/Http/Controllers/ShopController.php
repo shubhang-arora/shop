@@ -87,7 +87,6 @@ class ShopController extends Controller
 
     private function syncCategories(Shop $shops, $categories)
     {
-
         $shops->categories()->detach();
         foreach ($categories as $category) {
             $newCategories = Category::firstOrCreate([
@@ -105,7 +104,9 @@ class ShopController extends Controller
      */
     public function show($id)
     {
-        dd(User::findorFail($id));
+        $shop = Shop::findorfail($id);
+
+        dd($shop);
     }
 
     /**
