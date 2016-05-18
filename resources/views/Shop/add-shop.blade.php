@@ -3,7 +3,7 @@
 @section('content')
     <div class="products-grid">
         <header>
-            <h3 class="head text-center">Latest Products</h3>
+            <h3 class="head text-center">Shops</h3>
         </header>
         @foreach($shops as $key=>$shop)
         <div class="col-m-4 col-sm-6 col-xs-12 product simpleCart_shelfItem text-center">
@@ -13,7 +13,7 @@
                     <a href="{{action('ShopController@show',$shop->id)}}">Quick View</a>
                 </div>
                 <a class="product_name" href="{{action('ShopController@show',$shop->id)}}">{{$shop->shop_name}}</a>
-                <p><a class="item_add" href="#"><i></i> <span class="item_price">Owner : {{$shop->user_name}}</span></a></p>
+                <p><a class="item_add" href="#"><i></i> <span class="item_price">Owner : {{$shop->user->user_name}}</span></a></p>
                 <br><br>
                 <a href="#!"><i class="glyphicon glyphicon-ok text-success add-remove add" id="{{$shop->id}}" aria-hidden="true" style="font-size: larger"></i>
                 &nbsp;

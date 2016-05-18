@@ -35,7 +35,11 @@ class ShopController extends Controller
      */
     public function index()
     {
-        //
+
+        $shops = Shop::latest('created_at')->where('added',1)->where('deleted',0)->get();
+        $categories = Category::lists('name','id');
+        $cities = City::lists('city_name','id');
+        return view('Shop.home',compact('shops','categories','cities'));
     }
 
     /**

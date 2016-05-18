@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Zipcode extends Model
 {
-    public function cities()
+    public function city()
     {
-        return $this->belongsTo('App/City');
+        return $this->belongsTo('App\City');
     }
 }
