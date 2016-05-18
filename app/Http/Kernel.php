@@ -31,5 +31,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'isAdmin'   =>  \App\Http\Middleware\isAdmin::class,
         'addShop'   =>  \App\Http\Middleware\addShop::class,
+        'shouldHaveShop'    =>  \App\Http\Middleware\shouldHaveShop::class,
     ];
 }

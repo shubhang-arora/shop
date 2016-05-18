@@ -25,7 +25,8 @@ class ShopController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('isAdmin',['only' =>  ['approveAdvertisement','approvedAdvertisement','getShop','postShop']]);
-        $this->middleware('addShop');
+        $this->middleware('addShop',['only' =>  ['create','store']]);
+        $this->middleware('shouldHaveShop',['except'    =>  ['create','store']]);
     }
     /**
      * Display a listing of the resource.
@@ -197,21 +198,16 @@ class ShopController extends Controller
         return view('Shop.offer');
     }
 
-    public function postOffer(Request $request)
+    public function postOffer(Requests\AddOfferRequest $request)
     {
-        dd(Auth::user()->shop);
-        $this->validate($request, [
-            'title' => 'required',
-            'description' => 'required',
-            'daterange' => 'required',
-        ]);
+
         $daterange = explode(' - ', $request->input('daterange'));
         $premium_offer = 0;
         if ($request->has('premium_offer')) {
             $premium_offer = 1;
         }
         $offer = Offer::create([
-            'shop_id' => Auth::user()->shop()->id,
+            'shop_id' => Auth::user()->shop->id,
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'start_date' => $daterange[0],
