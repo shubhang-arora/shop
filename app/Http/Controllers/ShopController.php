@@ -159,10 +159,9 @@ class ShopController extends Controller
     {
 
         Advertisement::create([
-            'user_id'       =>  Auth::user()->id,
-            'title'         =>  $request->input('title'),
-            'description'   =>  $request->input('description'),
-            'money'         =>  0
+            'shop_id' => Auth::user()->shop->id,
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
         ]);
     }
 

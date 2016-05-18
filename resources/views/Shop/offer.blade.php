@@ -1,20 +1,7 @@
 @extends('app')
 
 @section('content')
-    @if (session('status'))
-        <div class="alert-message error">
-            {{ session('status') }}
-        </div>
-    @endif
-    @if($errors->any())
-        <div class="row">
-            <div class="col-md-12">
-                <div class="page-content">
-                    @include('errors.list')
-                </div>
-            </div>
-        </div>
-        @endif
+
                 <!-- registration-form -->
         <div class="registration-form">
             <div class="container">
@@ -34,6 +21,20 @@
                 <div class="registration-grids">
                     <div class="col-xs-12">
                         <div class="reg">
+                            @if (session('status'))
+                                <div class="alert alert-danger">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+                            @if($errors->any())
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="page-content">
+                                            @include('errors.list')
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                             <p>Welcome, please enter the following details to add a offer.</p>
                             {!! Form::open(['action'=>'ShopController@postOffer']) !!}
                             {!! csrf_field() !!}
@@ -57,7 +58,6 @@
                                 <li class="text-info">{!! Form::checkbox('premium_offer',null) !!}</li>
                             </ul>
 
-                            {!! Recaptcha::render() !!}
                             <input type="submit" value="Add Offer">
                             {!! Form::close() !!}
                         </div>
@@ -66,9 +66,6 @@
                 </div>
             </div>
         </div>
-        <!-- registration-form -->
-
-
 @endsection
 
 @section('scripts')
