@@ -167,7 +167,7 @@ class ShopController extends Controller
 
     public function approveAdvertisement()
     {
-        $add = Advertisement::where('approved',0)->where('paid',0)->get();
+        $add = Advertisement::where('approved',0)->where('amount',0)->get();
         dd($add);
     }
     // for admin
