@@ -73,7 +73,10 @@
         console.log(moment());
         var minDate = new Date().toJSON().slice(0, 10);
         $('input[name="daterange"]').daterangepicker({
-            "minDate": moment()
+            "minDate": moment(),
+locale: {
+            format: 'YYYY/MM/DD'
+        }
         });
     </script>
 @endsection
