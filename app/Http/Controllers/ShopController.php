@@ -203,7 +203,6 @@ class ShopController extends Controller
 
     public function postOffer(Requests\AddOfferRequest $request)
     {
-
         $daterange = explode(' - ', $request->input('daterange'));
         $premium_offer = 0;
         if ($request->has('premium_offer')) {
@@ -217,7 +216,12 @@ class ShopController extends Controller
             'end_date' => $daterange[1],
             'premium_offer' => $premium_offer
         ]);
+    }
 
+    public  function showOffer($id)
+    {
+        $offer = Offer::find($id);
+        return view('Shop.offerShow',compact('offer'));
     }
 
     public function getShop()
