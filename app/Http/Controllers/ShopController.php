@@ -216,6 +216,8 @@ class ShopController extends Controller
             'end_date' => $daterange[1],
             'premium_offer' => $premium_offer
         ]);
+
+        return redirect('/offer/'.$offer->id);
     }
 
     public  function showOffer($id)
