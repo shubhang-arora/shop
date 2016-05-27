@@ -11,7 +11,10 @@ class Advertisement extends Model
         'shop_id',
         'title',
         'description',
-        'money'
+        'money',
+        'deleted',
+        'approved'
+
     ];
 
     public function shop()

@@ -24,10 +24,8 @@ class AdvertiseRequest extends Request
     public function rules()
     {
         return [
-            'shop_id'   =>  'required',
             'title'     =>  'required',
             'description'   =>  'required|max:30',
-            'money' =>  'required'
         ];
     }
 }

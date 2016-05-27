@@ -176,7 +176,7 @@ class ShopController extends Controller
 
     public function approveAdvertisement()
     {
-        $add = Advertisement::where('approved',0)->where('paid',0)->get();
+        $add = Advertisement::where('approved',0)->where('amount',0)->get();
         dd($add);
     }
     // for admin
@@ -227,6 +227,13 @@ class ShopController extends Controller
             'premium_offer' => $premium_offer
         ]);
 
+        return redirect('/offer/'.$offer->id);
+    }
+
+    public  function showOffer($id)
+    {
+        $offer = Offer::find($id);
+        return view('Shop.offerShow',compact('offer'));
     }
 
     public function getShop()
