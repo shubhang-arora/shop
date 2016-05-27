@@ -16,6 +16,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AdvertiseRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Symfony\Component\HttpKernel\EventListener\AddRequestFormatsListener;
 
 class ShopController extends Controller
@@ -83,6 +84,15 @@ class ShopController extends Controller
 
             ]);
             $this->syncCategories($shop, $request->input('categories'));
+            $destinationPath = 'uploads'; // upload path
+            $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
+            $fileName = rand(11111, 99999) . '.' . $extension; // renaming image
+            Input::file('image')->move($destinationPath, $fileName);
+
+            $shop->images()->create([
+                'link' => '/uploads/'.$fileName
+            ]);
+
             return redirect('/');
         }
         else

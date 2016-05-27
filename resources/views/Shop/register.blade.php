@@ -39,7 +39,7 @@
                             @endif
                             <p>Welcome, please enter the following details to continue.</p>
                             <p>If you have previously registered with us, <a href="#">click here</a></p>
-                            {!! Form::open(['action'=>'ShopController@store']) !!}
+                            {!! Form::open(['action'=>'ShopController@store', 'enctype'=>"multipart/form-data"]) !!}
                             {!! csrf_field() !!}
                             <ul>
                                 <li class="text-info">{!! Form::label('shop_name','Shop Name:') !!}</li>
@@ -86,6 +86,11 @@
                                 <li class="text-info">{!! Form::label('password','Password') !!}</li>
                                 <li class="text-info">{!! Form::password('password',null) !!}</li>
                             </ul>
+
+                                <ul>
+                                    <li class="text-info">{!! Form::label('image','Shop Image') !!}</li>
+                                    <li class="text-info"><input type="file" name="image"></li>
+                                </ul>
 
                             {!! Recaptcha::render() !!}
                             <input type="submit" value="Register Shop">

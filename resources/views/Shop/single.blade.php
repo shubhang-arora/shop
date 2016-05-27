@@ -7,9 +7,12 @@
                 <div class="product-listy">
                     <h2>Our Offers</h2>
                     <ul class="product-list">
-                        @foreach($shop->offers as $offer)
+                        @foreach($shop->offers as $key=>$offer)
                             <li><a href="">{{$offer->title}}</a></li>
                         @endforeach
+                        @unless(isset($key))
+                                <li><a href="">No Offers Right Now</a></li>
+                        @endunless
                     </ul>
                 </div>
 
@@ -18,15 +21,13 @@
                 <div class="col-md-5 zoom-grid">
                     <div class="flexslider">
                         <ul class="slides">
-                            <li data-thumb="images/si.jpg">
-                                <div class="thumb-image"> <img src="{{asset('images/si.jpg')}}" data-imagezoom="true" class="img-responsive" alt="" /> </div>
-                            </li>
-                            <li data-thumb="images/si1.jpg">
-                                <div class="thumb-image"> <img src="{{asset('images/si1.jpg')}}" data-imagezoom="true" class="img-responsive" alt="" /> </div>
-                            </li>
-                            <li data-thumb="images/si2.jpg">
-                                <div class="thumb-image"> <img src="{{asset('images/si2.jpg')}}" data-imagezoom="true" class="img-responsive" alt="" /> </div>
-                            </li>
+                            @foreach($shop->images as $key=>$image)
+                                <li data-thumb="{{asset($image->link)}}">
+                                    <div class="thumb-image"> <img src="{{asset($image->link)}}" data-imagezoom="true" class="img-responsive" alt="" /> </div>
+                                </li>
+                            @endforeach
+
+
                         </ul>
                     </div>
                 </div>

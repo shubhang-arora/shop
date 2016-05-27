@@ -8,7 +8,7 @@
         @foreach($shops as $key=>$shop)
         <div class="col-m-4 col-sm-6 col-xs-12 product simpleCart_shelfItem text-center">
             <div id="box">
-                <a href="{{action('ShopController@show',$shop->id)}}"><img src="{{asset('images/shop-image.png')}}" alt="{{$shop->shop_name}}" /></a>
+                <a href="{{action('ShopController@show',$shop->id)}}"><img src="{{asset($shop->images[0]->link)}}" alt="{{$shop->shop_name}}" /></a>
                 <div class="mask">
                     <a href="{{action('ShopController@show',$shop->id)}}">Quick View</a>
                 </div>
