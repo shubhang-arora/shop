@@ -111,8 +111,7 @@ class ShopController extends Controller
     public function show($id)
     {
         $shop = Shop::findorfail($id);
-
-        dd($shop);
+        return view('Shop.single',compact('shop'));
     }
 
     /**
@@ -203,8 +202,8 @@ class ShopController extends Controller
 
     public function postOffer(Requests\AddOfferRequest $request)
     {
-
         $daterange = explode(' - ', $request->input('daterange'));
+
         $premium_offer = 0;
         if ($request->has('premium_offer')) {
             $premium_offer = 1;

@@ -29,7 +29,7 @@
                     <h3>REGISTERED CUSTOMERS</h3>
                     <p>If you have an account with us, please log in.</p>
                     @if (session('status'))
-                        <div class="alert-message error">
+                        <div class="alert alert-danger">
                             {{ session('status') }}
                         </div>
                     @endif
