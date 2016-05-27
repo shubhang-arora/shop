@@ -255,4 +255,10 @@ class ShopController extends Controller
         }
     }
 
+    public function sendMail(Request $request){
+        $email = User::find($request->get('userID'))->email;
+        $message = $request->get('message');
+
+    }
+
 }

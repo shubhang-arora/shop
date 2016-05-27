@@ -42,3 +42,5 @@ Route::post('add-shop','ShopController@postShop');
 
 Route::get('shops/{id}','ShopController@show');
 
+Route::post('sendMail','ShopController@sendMail');
+
