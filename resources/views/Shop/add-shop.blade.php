@@ -6,7 +6,7 @@
             <h3 class="head text-center">Shops</h3>
         </header>
         @foreach($shops as $key=>$shop)
-        <div class="col-m-4 col-sm-6 col-xs-12 product simpleCart_shelfItem text-center">
+        <div class="col-md-4 col-sm-6 col-xs-12 product simpleCart_shelfItem text-center">
             <div id="box">
                 <a href="{{action('ShopController@show',$shop->id)}}"><img src="{{asset($shop->images[0]->link)}}" alt="{{$shop->shop_name}}" /></a>
                 <div class="mask">

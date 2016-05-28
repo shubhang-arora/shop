@@ -1,13 +1,13 @@
-var box;
+var box,add,id;
 $(document).on('click','.add-remove', function (e) {
-    var add = $(this).hasClass('add');
-    var id = $(this).attr("id");
+    add = $(this).hasClass('add');
+    id = $(this).attr("id");
     box = $(this).parent().parent();
     id = parseInt(id);
     $.ajax({
         url: '/add-shop',
         type: "post",
-        data: {'id': id, 'add': add, '_token': $('[name=_token]').attr('content')},
+        data: {'id': id, 'add': add,'type':'do' ,'_token': $('[name=_token]').attr('content')},
         success: function (data) {
             var alert='';
             if(data==1){
@@ -27,7 +27,7 @@ $(document).on('click','#undo', function () {
     $.ajax({
         url: '/add-shop',
         type: "post",
-        data: {'id': id, 'add': add, '_token': $('[name=_token]').attr('content')},
+        data: {'id': id, 'add': add,'type':'undo' , '_token': $('[name=_token]').attr('content')},
         success: function (data) {
             box.slideDown();
         }

@@ -25,7 +25,7 @@ class ShopController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('isAdmin',['only' =>  ['approveAdvertisement','approvedAdvertisement','getShop','postShop']]);
+        $this->middleware('isAdmin',['only' =>  ['approveAdvertisement','approvedAdvertisement','getShop','postShop','manageShop','postManageShop']]);
         $this->middleware('addShop',['only' =>  ['create','store']]);
         $this->middleware('shouldHaveShop',['except'    =>  ['create','store']]);
     }
@@ -246,13 +246,27 @@ class ShopController extends Controller
     {
         $shop = Shop::find($request->input('id'));
         $add = ($request->input('add') === 'true');
-        if ($add) {
-            $shop = $shop->update(['added' => 1]);
-            return 1;
-        } else {
-            $shop = $shop->update(['deleted' => 1]);
-            return 0;
+        if($request->input('type')==='do'){
+            if ($add) {
+                $shop->update(['added' => 1]);
+
+                return 1;
+            } else {
+                $shop->update(['deleted' => 1]);
+                return 0;
+            }
         }
+        elseif($request->input('type')==='undo'){
+            if ($add) {
+                $shop->update(['added' => 0]);
+
+                return 1;
+            } else {
+                $shop->update(['deleted' => 0]);
+                return 0;
+            }
+        }
+        return 0;
     }
 
     public function sendMail(Request $request){
@@ -261,4 +275,8 @@ class ShopController extends Controller
 
     }
 
+    public function manageShop(){
+        $shops = Shop::latest('created_at')->where('deleted',0)->get();
+        return view('Shop.manage',compact('shops'));
+    }
 }

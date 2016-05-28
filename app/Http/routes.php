@@ -40,6 +40,9 @@ Route::get('offer/{id}','ShopController@showOffer');
 Route::get('add-shop','ShopController@getShop');
 Route::post('add-shop','ShopController@postShop');
 
+//Manage Shop route
+Route::get('manage-shop','ShopController@manageShop');
+
 Route::get('shops/{id}','ShopController@show');
 
 Route::post('sendMail','ShopController@sendMail');
