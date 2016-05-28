@@ -6,11 +6,11 @@
             <h3 class="head text-center">Shops</h3>
         </header>
         <article class="page-content">
-            <div class="col-md-6">
+            <div class="col-sm-6">
                 <h3>{!! Form::label('category','Filter by Category : ') !!}</h3>
                 {!! Form::select('category',$categories,null,['optional' => 'Select','id'=>'category']) !!}
             </div>
-            <div class="col-md-6">
+            <div class="col-sm-6">
                 <h3>{!! Form::label('city','Filter by City : ') !!}</h3>
                 {!! Form::select('city',$cities,null,['optional' => 'Select','id'=>'city']) !!}
 
@@ -20,7 +20,7 @@
         @foreach($shops as $key=>$shop)
             <div class="col-md-4 col-sm-6 col-xs-12 product simpleCart_shelfItem text-center" id="shopCard" data-city="{{$shop->zipcode->city->id}}" data-category="@foreach($shop->categories as $category){{$category->id}} @endforeach">
                 <div id="box">
-                    <a href="{{action('ShopController@show',$shop->id)}}"><img src="{{asset('images/shop-image.png')}}" alt="{{$shop->shop_name}}" /></a>
+                    <a href="{{action('ShopController@show',$shop->id)}}"><img src="{{asset($shop->images[0]->link)}}" alt="{{$shop->shop_name}}" /></a>
                     <div class="mask">
                         <a href="{{action('ShopController@show',$shop->id)}}">Quick View</a>
                     </div>
