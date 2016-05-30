@@ -89,7 +89,8 @@
 
                                 <ul>
                                     <li class="text-info">{!! Form::label('image','Shop Image') !!}</li>
-                                    <li class="text-info"><input type="file" name="image"></li>
+                                    <li class="text-info"><input type="submit" class="fileUp" value="Upload"></li>
+                                    <input type="file" name="image" style="display: none;" id="actualFile">
                                 </ul>
 
                             {!! Recaptcha::render() !!}
@@ -113,6 +114,10 @@
         <!-- registration-form -->
 
 
+@endsection
+
+@section('scripts')
+    <script src="{{asset('js/fileUpButton.js')}}"></script>
 @endsection
 
 @section('head')

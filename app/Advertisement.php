@@ -13,7 +13,8 @@ class Advertisement extends Model
         'description',
         'money',
         'deleted',
-        'approved'
+        'approved',
+        'banner'
 
     ];
 

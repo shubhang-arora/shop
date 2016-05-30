@@ -1,21 +1,7 @@
 @extends('app')
 
 @section('content')
-    @if (session('status'))
-        <div class="alert-message error">
-            {{ session('status') }}
-        </div>
-    @endif
-    @if($errors->any())
-        <div class="row">
-            <div class="col-md-12">
-                <div class="page-content">
-                    @include('errors.list')
-                </div>
-            </div>
-        </div>
-        @endif
-                <!-- registration-form -->
+   <!-- registration-form -->
         <div class="registration-form">
             <div class="container">
                 <div class="dreamcrub">
@@ -49,7 +35,7 @@
                                 </div>
                             @endif
                             <p>Welcome, please enter the following details to add a offer.</p>
-                            {!! Form::open(['action'=>'ShopController@postAdvertise']) !!}
+                            {!! Form::open(['action'=>'ShopController@postAdvertise', 'enctype'=>"multipart/form-data"]) !!}
                             {!! csrf_field() !!}
                             <ul>
                                 <li class="text-info">{!! Form::label('title','Title') !!}</li>
@@ -59,6 +45,12 @@
                             <ul>
                                 <li class="text-info">{!! Form::label('description','Description') !!}</li>
                                 <li class="text-info">{!! Form::textarea('description',null) !!}</li>
+                            </ul>
+
+                            <ul>
+                                <li class="text-info">{!! Form::label('banner','Banner') !!}</li>
+                                <li class="text-info"><input type="submit" class="fileUp" value="Upload"></li>
+                                <input type="file" name="banner" style="display: none;" id="actualFile">
                             </ul>
 
                             <input type="submit" value="Add Advertisement">
@@ -71,6 +63,9 @@
         </div>
 @endsection
 
+@section('scripts')
+    <script src="{{asset('js/fileUpButton.js')}}"></script>
+@endsection
 
 @section('head')
     <title>Add Advertisement - Businessway</title>

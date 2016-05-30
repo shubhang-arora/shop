@@ -166,12 +166,19 @@ class ShopController extends Controller
 
     public function postAdvertise(AdvertiseRequest $request)
     {
+        $destinationPath = 'uploads'; // upload path
+        $extension = Input::file('banner')->getClientOriginalExtension(); // getting image extension
+        $fileName = rand(11111, 99999) . '.' . $extension; // renaming image
+        Input::file('banner')->move($destinationPath, $fileName);
 
         Advertisement::create([
             'shop_id' => Auth::user()->shop->id,
             'title' => $request->input('title'),
             'description' => $request->input('description'),
+            'banner'=>'uploads/'.$fileName
         ]);
+
+        return redirect(action('ShopController@show',Auth::user()->shop->id));
     }
 
     public function approveAdvertisement()

@@ -53,7 +53,7 @@
                             <input type="password" name="password" id="password">
                         </div>
 
-                        <a class="acount-btn" type="submit" href="javascript:{}" onclick="document.getElementById('loginForm').submit();">Login</a>
+                        <input type="submit" value="Login">
                     </form>
                 </div>
                 <div class="clearfix"> </div>

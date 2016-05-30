@@ -7,8 +7,10 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddAdminColumn' => $baseDir . '/database/migrations/2016_05_18_095120_add_admin_column.php',
+    'AddBannerColumn' => $baseDir . '/database/migrations/2016_05_30_070441_add_banner_column.php',
     'AddColumnToShopTable' => $baseDir . '/database/migrations/2016_05_16_181903_add_column_to_shop_table.php',
     'AddDeletedColumn' => $baseDir . '/database/migrations/2016_05_19_154442_add_deleted_column.php',
+    'AddFavColumn' => $baseDir . '/database/migrations/2016_05_30_040741_add_fav_column.php',
     'AddForeignKeyInShopTable' => $baseDir . '/database/migrations/2016_05_16_155821_add_foreign_key_in_shop_table.php',
     'AddTimestamps' => $baseDir . '/database/migrations/2016_05_27_070024_add_timestamps.php',
     'CreateAddvertisementTable' => $baseDir . '/database/migrations/2016_05_16_154636_create_addvertisement_table.php',

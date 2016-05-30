@@ -1464,7 +1464,7 @@ li.home a {
 	margin: 0 0 2em 0;
 	line-height: 1.5em;
 }
-.acount-btn {
+.acount-btn ,.fileUp{
 	background: #816263;
 	color: #FFF;
 	font-size: 15px;
@@ -1474,9 +1474,8 @@ li.home a {
 	-moz-transition: 0.5s all;
 	-o-transition: 0.5s all;
 	display: inline-block;
-	text-transform: uppercase;
 }
-.acount-btn:hover, .login-right input[type="submit"]:hover{
+.acount-btn:hover, .login-right input[type="submit"]:hover,.fileUp:hover{
 	background:#000;
 	text-decoration:none;
 	color:#fff;
@@ -2802,7 +2801,7 @@ p.right {
 	.login-right {
 		margin-top:20px;
 	}
-	.acount-btn {
+	.acount-btn ,.fileUp{
 		font-size: 13px;
 		padding: 0.7em 1em;
 	}

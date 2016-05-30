@@ -24,8 +24,9 @@ class AdvertiseRequest extends Request
     public function rules()
     {
         return [
-            'title'     =>  'required',
-            'description'   =>  'required|max:30',
+            'title' => 'required',
+            'description' => 'required|max:30',
+            'banner' => 'image'
         ];
     }
 }
