@@ -183,33 +183,43 @@ class ShopController extends Controller
 
     public function approveAdvertisement()
     {
-        $add = Advertisement::where('approved',0)->where('amount',0)->get();
-        dd($add);
+        $ads = Advertisement::where('approved',0)->where('amount',0)->get();
+        return view('Shop.add-ad',compact('ads'));
+
     }
     // for admin
     public function approvedAdvertisement(Request $request)
     {
-        $add = Advertisement::findorfail($request->input('id'));
-        if($request->input('flag'))
-        {
-            if($request->input('money')<=0)
-            {
-                //send error(money can not be 0 or negative)
-            }
-            else
-            {
-                $add->update([
-                   'money'  =>  $request->input('money'),
-                    'approved'  =>  1
-                ]);
+
+        $ad = Advertisement::find($request->input('id'));
+
+        $add = ($request->input('add') === 'true');
+        if($request->input('type')==='do') {
+            $amount = (float)$request->get('amount');
+            if ($add) {
+                if($amount>=0){
+                    $ad->update(['approved' => 1, 'amount' => $amount]);
+                    return 1;
+                }
+                else{
+                    return json_encode(['error'=>'Amount should be greater than zero']);
+                }
+            } else {
+                $ad->update(['deleted' => 1]);
+                return 0;
             }
         }
-        else
-        {
-            $add->update([
-               'approved'   =>  0
-            ]);
+        elseif($request->input('type')==='undo'){
+            if ($add) {
+                $ad->update(['approved' => 0,'amount'=>0]);
+
+                return 1;
+            } else {
+                $ad->update(['deleted' => 0]);
+                return 0;
+            }
         }
+        return 0;
     }
 
     public function getOffer()

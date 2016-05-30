@@ -11,7 +11,7 @@ class Advertisement extends Model
         'shop_id',
         'title',
         'description',
-        'money',
+        'amount',
         'deleted',
         'approved',
         'banner'

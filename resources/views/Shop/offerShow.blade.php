@@ -1,1 +1,1 @@
-{{dd($offer)}}
+{{$offer}}
