@@ -14,9 +14,6 @@
                         Login
                     </li>
                 </ul>
-                <ul class="previous">
-                    <li><a href="{{url('/')}}">Back to Previous Page</a></li>
-                </ul>
                 <div class="clearfix"></div>
             </div>
             <div class="account_grid">

@@ -104,7 +104,8 @@
                                 </div>
                             </ul>
                         </li>
-                        <li><a href="{{url('/auth/logout')}}"><span class="glyphicon glyphicon-log-out"> </span>&nbsp;Logout</a></li>
+                        <li><a href="{{url('/auth/login')}}"><span class="glyphicon glyphicon-user"> </span>&nbsp;Login</a></li>
+                        <li><a href="{{url('/auth/register')}}"><span class="glyphicon glyphicon-lock"> </span>&nbsp;Register</a></li>
                     </ul>
                 </div>
                 <!--/.navbar-collapse-->

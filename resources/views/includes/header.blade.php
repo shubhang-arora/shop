@@ -8,19 +8,7 @@
     </div>
 </div>
 @if(\Illuminate\Support\Facades\Auth::check()==false)
-    <ul>
-        <li><a href="{{url('/auth/login')}}"><span class="glyphicon glyphicon-user"> </span>Login</a></li>
-        <li><a href="{{url('/auth/register')}}"><span class="glyphicon glyphicon-lock"> </span>Create an Account</a>
-        </li>
-    </ul>
-@else
-    <ul>
-        <li><a href="{{url('/auth/logout')}}"><span class="glyphicon glyphicon-log-out"> </span>Logout</a></li>
-    </ul>
-@endif
-<!-- header-section-ends -->
-@if(\Illuminate\Support\Facades\Auth::check()==false)
-    @include('includes.adminNav')
+    @include('includes.unauthNav')
 @elseif(\Illuminate\Support\Facades\Auth::user()->admin)
     @include('includes.adminNav')
 @else

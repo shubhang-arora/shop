@@ -15,9 +15,6 @@
                         Registration
                     </li>
                 </ul>
-                <ul class="previous">
-                    <li><a href="{{action('Auth\AuthController@getRegister')}}">Back to Previous Page</a></li>
-                </ul>
                 <div class="clearfix"></div>
             </div>
             <h2>Registration</h2>

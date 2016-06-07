@@ -9,8 +9,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <a href="{{url('/manage-shop')}}" type="button" class="btn btn-default btn-lg btn-block">Put an
-                        Advertisement</a>
+                    <a href="{{url('/admin/approve/advertisement')}}" type="button" class="btn btn-default btn-lg btn-block">Approve
+                        Advertisements</a>
                 </div>
                 <div class="col-md-6">
                     <a href="{{url('/add-shop')}}" type="button" class="btn btn-default btn-lg btn-block">Add Shops</a>
