@@ -48,7 +48,7 @@
 
                             <ul>
                                 <li class="text-info">{!! Form::label('categories','Category') !!}</li>
-                                <li class="text-info">{!! Form::select('categories[]',$categories,null,['class'=>'required-item','id'=>'tag_list','aria-required'=>'true','multiple']) !!}</li>
+                                <li class="text-info">{!! Form::select('categories[]',$categories,null,['class'=>'required-item','id'=>'tag_list','aria-required'=>'true','multiple','style'=>'width:100%']) !!}</li>
                             </ul>
 
 
@@ -59,17 +59,17 @@
 
                             <ul>
                                 <li class="text-info">{!! Form::label('city','City') !!}</li>
-                                <li class="text-info">{!! Form::select('city',$cities,null) !!}</li>
+                                <li class="text-info">{!! Form::select('city',$cities,null,['style'=>'width:100%']) !!}</li>
                             </ul>
 
                             <ul>
                                 <li class="text-info">{!! Form::label('state','State') !!}</li>
-                                <li class="text-info">{!! Form::select('state',$states,null) !!}</li>
+                                <li class="text-info">{!! Form::select('state',$states,null,['style'=>'width:100%']) !!}</li>
                             </ul>
 
                             <ul>
                                 <li class="text-info">{!! Form::label('zipcode','Zipcode:') !!}</li>
-                                <li class="text-info">{!! Form::select('zipcode',$zipcodes,null) !!}</li>
+                                <li class="text-info">{!! Form::select('zipcode',$zipcodes,null,['style'=>'width:100%']) !!}</li>
                             </ul>
 
                             <ul>
@@ -118,8 +118,15 @@
 
 @section('scripts')
     <script src="{{asset('js/fileUpButton.js')}}"></script>
+    <script>
+        $('select').each(function (index,value) {
+            $(value).select2()
+        });
+    </script>
 @endsection
 
 @section('head')
     <title>Create Shop - Businessway</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 @endsection
