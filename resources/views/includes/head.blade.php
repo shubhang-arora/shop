@@ -17,6 +17,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{{asset('js/simpleCart.min.js')}}"> </script>
 <!-- cart -->
 <link rel="stylesheet" href="{{asset('css/flexslider.css')}}" type="text/css" media="screen" />
-
+<link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
 <meta name="_token" content="{{ csrf_token() }}">
 @yield('head')

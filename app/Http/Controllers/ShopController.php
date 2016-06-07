@@ -25,10 +25,11 @@ class ShopController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('isAdmin',['only' =>  ['approveAdvertisement','approvedAdvertisement','getShop','postShop','manageShop','postManageShop']]);
-        $this->middleware('addShop',['only' =>  ['create','store']]);
-        $this->middleware('shouldHaveShop',['except'    =>  ['create','store']]);
+        $this->middleware('isAdmin', ['only' => ['approveAdvertisement', 'approvedAdvertisement', 'getShop', 'postShop', 'manageShop']]);
+        $this->middleware('addShop', ['only' => ['create', 'store']]);
+        $this->middleware('shouldHaveShop', ['except' => ['create', 'store']]);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,10 +38,10 @@ class ShopController extends Controller
     public function index()
     {
 
-        $shops = Shop::latest('created_at')->where('added',1)->where('deleted',0)->get();
-        $categories = Category::lists('name','id');
-        $cities = City::lists('city_name','id');
-        return view('Shop.home',compact('shops','categories','cities'));
+        $shops = Shop::latest('created_at')->where('added', 1)->where('deleted', 0)->get();
+        $categories = Category::lists('name', 'id');
+        $cities = City::lists('city_name', 'id');
+        return view('Shop.home', compact('shops', 'categories', 'cities'));
     }
 
     /**
@@ -51,11 +52,11 @@ class ShopController extends Controller
     public function create()
     {
 
-        $categories = Category::lists('name','name');
-        $cities = City::lists('city_name','id');
-        $states = State::lists('state_name','id');
-        $zipcodes = Zipcode::lists('code','id');
-        return view('Shop.register',compact('categories','cities','states','zipcodes'));
+        $categories = Category::lists('name', 'name');
+        $cities = City::lists('city_name', 'id');
+        $states = State::lists('state_name', 'id');
+        $zipcodes = Zipcode::lists('code', 'id');
+        return view('Shop.register', compact('categories', 'cities', 'states', 'zipcodes'));
     }
 
     /**
@@ -68,19 +69,17 @@ class ShopController extends Controller
     {
         $user = Auth::user();
         $password = $request->input('password');
-        if(Auth::validate(array('user_name' => $user->user_name, 'password' => $password)))
-        {
+        if (Auth::validate(array('user_name' => $user->user_name, 'password' => $password))) {
             $premium_shop = 0;
-            if($request->has('premium_shop'))
-            {
+            if ($request->has('premium_shop')) {
                 $premium_shop = 1;
             }
             $shop = Auth::user()->shop()->create([
-                'shop_name'  =>  $request->input('shop_name'),
-                'description'  =>  $request->input('description'),
-                'zipcode_id'    =>  $request->input('zipcode'),
-                'location'  =>  $request->input('location'),
-                'premium_shop'  =>  $premium_shop,
+                'shop_name' => $request->input('shop_name'),
+                'description' => $request->input('description'),
+                'zipcode_id' => $request->input('zipcode'),
+                'location' => $request->input('location'),
+                'premium_shop' => $premium_shop,
 
             ]);
             $this->syncCategories($shop, $request->input('categories'));
@@ -90,13 +89,11 @@ class ShopController extends Controller
             Input::file('image')->move($destinationPath, $fileName);
 
             $shop->images()->create([
-                'link' => '/uploads/'.$fileName
+                'link' => '/uploads/' . $fileName
             ]);
 
             return redirect('/');
-        }
-        else
-        {
+        } else {
             return redirect()->back();
         }
     }
@@ -115,19 +112,19 @@ class ShopController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $shop = Shop::findorfail($id);
-        return view('Shop.single',compact('shop'));
+        return view('Shop.single', compact('shop'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -138,8 +135,8 @@ class ShopController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -150,7 +147,7 @@ class ShopController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -175,18 +172,19 @@ class ShopController extends Controller
             'shop_id' => Auth::user()->shop->id,
             'title' => $request->input('title'),
             'description' => $request->input('description'),
-            'banner'=>'uploads/'.$fileName
+            'banner' => 'uploads/' . $fileName
         ]);
 
-        return redirect(action('ShopController@show',Auth::user()->shop->id));
+        return redirect(action('ShopController@show', Auth::user()->shop->id));
     }
 
     public function approveAdvertisement()
     {
-        $ads = Advertisement::where('approved',0)->where('amount',0)->get();
-        return view('Shop.add-ad',compact('ads'));
+        $ads = Advertisement::where('approved', 0)->where('amount', 0)->get();
+        return view('Shop.add-ad', compact('ads'));
 
     }
+
     // for admin
     public function approvedAdvertisement(Request $request)
     {
@@ -194,24 +192,22 @@ class ShopController extends Controller
         $ad = Advertisement::find($request->input('id'));
 
         $add = ($request->input('add') === 'true');
-        if($request->input('type')==='do') {
+        if ($request->input('type') === 'do') {
             $amount = (float)$request->get('amount');
             if ($add) {
-                if($amount>=0){
+                if ($amount >= 0) {
                     $ad->update(['approved' => 1, 'amount' => $amount]);
                     return 1;
-                }
-                else{
-                    return json_encode(['error'=>'Amount should be greater than zero']);
+                } else {
+                    return json_encode(['error' => 'Amount should be greater than zero']);
                 }
             } else {
                 $ad->update(['deleted' => 1]);
                 return 0;
             }
-        }
-        elseif($request->input('type')==='undo'){
+        } elseif ($request->input('type') === 'undo') {
             if ($add) {
-                $ad->update(['approved' => 0,'amount'=>0]);
+                $ad->update(['approved' => 0, 'amount' => 0]);
 
                 return 1;
             } else {
@@ -244,26 +240,26 @@ class ShopController extends Controller
             'premium_offer' => $premium_offer
         ]);
 
-        return redirect('/offer/'.$offer->id);
+        return redirect('/offer/' . $offer->id);
     }
 
-    public  function showOffer($id)
+    public function showOffer($id)
     {
         $offer = Offer::find($id);
-        return view('Shop.offerShow',compact('offer'));
+        return view('Shop.offerShow', compact('offer'));
     }
 
     public function getShop()
     {
-        $shops = Shop::latest('created_at')->where('added',0)->where('deleted',0)->get();
-        return view('Shop.add-shop',compact('shops'));
+        $shops = Shop::latest('created_at')->where('added', 0)->where('deleted', 0)->get();
+        return view('Shop.add-shop', compact('shops'));
     }
 
     public function postShop(Request $request)
     {
         $shop = Shop::find($request->input('id'));
         $add = ($request->input('add') === 'true');
-        if($request->input('type')==='do'){
+        if ($request->input('type') === 'do') {
             if ($add) {
                 $shop->update(['added' => 1]);
 
@@ -272,8 +268,7 @@ class ShopController extends Controller
                 $shop->update(['deleted' => 1]);
                 return 0;
             }
-        }
-        elseif($request->input('type')==='undo'){
+        } elseif ($request->input('type') === 'undo') {
             if ($add) {
                 $shop->update(['added' => 0]);
 
@@ -282,18 +277,66 @@ class ShopController extends Controller
                 $shop->update(['deleted' => 0]);
                 return 0;
             }
+        } elseif ($request->input('type') === 'delete_do') {
+            if ($add) {
+                $shop->update(['added' => 1,'deleted' => 0]);
+                return 1;
+            }
+        } elseif ($request->input('type') === 'delete_undo') {
+            if ($add) {
+                $shop->update(['deleted' => 1]);
+                return 1;
+            }
         }
         return 0;
     }
 
-    public function sendMail(Request $request){
+    public function sendMail(Request $request)
+    {
         $email = User::find($request->get('userID'))->email;
         $message = $request->get('message');
 
     }
 
-    public function manageShop(){
-        $shops = Shop::latest('created_at')->where('deleted',0)->get();
-        return view('Shop.manage',compact('shops'));
+    public function manageShop()
+    {
+        $shops = Shop::latest('created_at')->where('deleted', 0)->get();
+        $title = 'Manage';
+        return view('Shop.manage', compact('shops','title'));
+    }
+
+    public function deletedShops()
+    {
+        $shops = Shop::latest('created_at')->where('deleted', 1)->get();
+        $title = 'Deleted';
+        return view('Shop.manage', compact('shops','title'));
+    }
+
+    public function userDashboard()
+    {
+
+    }
+
+    public function adminDashboard()
+    {
+        return view('Shop.admin');
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('shopName');
+        $shops = Shop::where('shop_name', 'like', '%' . $search . '%')->get();
+        $categories = collect();
+        $cities = collect();
+        foreach ($shops as $shop) {
+            foreach ($shop->categories as $category) {
+                $categories->push($category);
+            }
+
+            $cities->push($shop->zipcode->city);
+        }
+        $categories = $categories->unique('name')->lists('name', 'id');
+        $cities = $cities->lists('city_name', 'id');
+        return view('Shop.home', compact('shops', 'categories', 'cities'));
     }
 }

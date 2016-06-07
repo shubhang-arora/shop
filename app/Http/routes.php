@@ -42,8 +42,15 @@ Route::post('add-shop','ShopController@postShop');
 
 //Manage Shop route
 Route::get('manage-shop','ShopController@manageShop');
+Route::get('deleted-shops','ShopController@deletedShops');
 
 Route::get('shops/{id}','ShopController@show');
 
 Route::post('sendMail','ShopController@sendMail');
+
+Route::get('user-dashboard','ShopController@userDashboard');
+
+Route::get('admin-panel','ShopController@adminDashboard');
+
+Route::post('search','ShopController@search');
 
