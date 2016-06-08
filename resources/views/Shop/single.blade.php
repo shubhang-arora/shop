@@ -9,7 +9,7 @@
                     <h2>Our Offers</h2>
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                         @foreach($shop->offers as $offer)
-                        <div class="panel panel-default">
+                        <div class="panel panel-info">
                             <div class="panel-heading" role="tab" id="headingTwo">
                                 <h4 class="panel-title">
                                     <a class="collapsed offerTab" role="button" data-toggle="collapse" data-parent="#accordion" href="#{{$offer->id}}" aria-expanded="false" aria-controls="collapseTwo">

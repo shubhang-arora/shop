@@ -3705,14 +3705,12 @@ a#titleHeader {
 }
 
 .panel-default > .panel-heading {
-    background: #337ab7;
+    background: #3795d6;
     color: #ffffff;
 }
 
-a.offerTab:hover {
+a.offerTab:hover,a.offerTab:focus {
     text-decoration: none;
-    background: #337ab7;
-    color: #fff;
     transition: 0.7s all;
     -webkit-transition: 0.7s all;
     -o-transition: 0.7s all;
@@ -3769,5 +3767,4 @@ img#shopImage{
         display: block;
         margin: auto;
     }
-    /* CSS that should be displayed if width is equal to or less than 800px goes here */
 }

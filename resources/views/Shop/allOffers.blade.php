@@ -14,7 +14,7 @@
         }
             /*--}}
             <div class="col-sm-4">
-                <div class="panel @if($active) panel-default @else panel-danger @endif ">
+                <div class="panel panel-info">
                     <div class="panel-heading text-center">
                         <h3 class="panel-title">{{$offer->title}} @if($offer->premium_offer)<span
                                     class="glyphicon glyphicon-ok-circle"
