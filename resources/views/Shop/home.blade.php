@@ -80,24 +80,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="text-center" id="shopCard"
-                     data-city="{{$shop->zipcode->city->id}}"
-                     data-category="@foreach($shop->categories as $category){{$category->id}} @endforeach">
-                    <div id="box">
-                        <a href="{{action('ShopController@show',$shop->id)}}"><img
-                                    src="{{asset($shop->images[0]->link)}}"
-                                    alt="{{$shop->shop_name}}" id="shopImage"/></a>
-                        <a class="product_name"
-                           href="{{action('ShopController@show',$shop->id)}}">{{$shop->shop_name}}</a>
-                        <p>
-                            <a class="item_add" href="#"><i></i>
-                                <span class="item_price">Owner : {{$shop->user->user_name}}</span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <hr>
         @endforeach
         <div class="clearfix"></div>
     </div>
