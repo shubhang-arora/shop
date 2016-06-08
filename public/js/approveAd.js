@@ -4,7 +4,7 @@ $(document).on('click','.add', function (e) {
     id = $(this).attr("id");
     box = $(this).parent().parent();
     id = parseInt(id);
-    amount=$('#amount').val();
+    amount=$(this).parent().parent().find('#amount').val();
     if ( amount!= '') {
         amount=parseFloat(amount);
         ajaxCall();

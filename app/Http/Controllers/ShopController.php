@@ -9,6 +9,7 @@ use App\Shop;
 use App\State;
 use App\User;
 use App\Zipcode;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Http\Requests;
@@ -24,10 +25,10 @@ class ShopController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('isAdmin', ['only' => ['approveAdvertisement', 'approvedAdvertisement', 'getShop', 'postShop', 'manageShop']]);
+        $this->middleware('auth', ['except' => ['index', 'search', 'show', 'showOffer', 'offers']]);
+        $this->middleware('isAdmin', ['only' => ['approveAdvertisement', 'approvedAdvertisement', 'getShop', 'postShop', 'manageShop', 'adminDashboard']]);
         $this->middleware('addShop', ['only' => ['create', 'store']]);
-        $this->middleware('shouldHaveShop', ['except' => ['create', 'store']]);
+        $this->middleware('shouldHaveShop', ['except' => ['index', 'search', 'show', 'create', 'store', 'showOffer', 'offers']]);
     }
 
     /**
@@ -37,11 +38,11 @@ class ShopController extends Controller
      */
     public function index()
     {
-
+        $adverts = Advertisement::where('approved', 1)->where('amount', "!=",0)->orderBy('amount','desc')->get()->take(5);
         $shops = Shop::latest('created_at')->where('added', 1)->where('deleted', 0)->get();
         $categories = Category::lists('name', 'id');
         $cities = City::lists('city_name', 'id');
-        return view('Shop.home', compact('shops', 'categories', 'cities'));
+        return view('Shop.home', compact('shops', 'categories', 'cities','adverts'));
     }
 
     /**
@@ -245,8 +246,24 @@ class ShopController extends Controller
 
     public function showOffer($id)
     {
-        $offer = Offer::find($id);
-        return view('Shop.offerShow', compact('offer'));
+        $offer = Offer::findorFail($id);
+
+        $active = Carbon::parse($offer->start_date)->lte(Carbon::now());
+        $days = Carbon::parse($offer->start_date)->diffForHumans();
+        $start = true;
+        if ($active) {
+            $start = false;
+            $active = Carbon::parse($offer->end_date)->gte(Carbon::now());
+            $days = Carbon::parse($offer->end_date)->diffForHumans();
+        }
+
+        return view('Shop.offerShow', compact('offer', 'active', 'days', 'start'));
+    }
+
+    public function offers()
+    {
+        $offers = Offer::all();
+        return view('Shop.allOffers', compact('offers'));
     }
 
     public function getShop()
@@ -279,7 +296,7 @@ class ShopController extends Controller
             }
         } elseif ($request->input('type') === 'delete_do') {
             if ($add) {
-                $shop->update(['added' => 1,'deleted' => 0]);
+                $shop->update(['added' => 1, 'deleted' => 0]);
                 return 1;
             }
         } elseif ($request->input('type') === 'delete_undo') {
@@ -302,14 +319,14 @@ class ShopController extends Controller
     {
         $shops = Shop::latest('created_at')->where('deleted', 0)->get();
         $title = 'Manage';
-        return view('Shop.manage', compact('shops','title'));
+        return view('Shop.manage', compact('shops', 'title'));
     }
 
     public function deletedShops()
     {
         $shops = Shop::latest('created_at')->where('deleted', 1)->get();
         $title = 'Deleted';
-        return view('Shop.manage', compact('shops','title'));
+        return view('Shop.manage', compact('shops', 'title'));
     }
 
     public function userDashboard()

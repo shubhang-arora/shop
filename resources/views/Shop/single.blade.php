@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <div class="products-page">
+            @if($shop->offers->count()!=0)
             <div class="products">
                 <div class="product-list">
                     <h2>Our Offers</h2>
@@ -11,7 +12,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingTwo">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#{{$offer->id}}" aria-expanded="false" aria-controls="collapseTwo">
+                                    <a class="collapsed offerTab" role="button" data-toggle="collapse" data-parent="#accordion" href="#{{$offer->id}}" aria-expanded="false" aria-controls="collapseTwo">
                                         {{$offer->title}}
                                     </a>
                                 </h4>
@@ -26,7 +27,8 @@
                     </div>
                 </div>
             </div>
-            <div class="new-product">
+            @endif
+            <div class=" @if($shop->offers->count()!=0) new-product @else col-md-12 @endif">
                 <div class="row">
                 <div class="col-md-5 zoom-grid">
                     <div class="flexslider">
