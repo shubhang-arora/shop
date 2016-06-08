@@ -80,7 +80,6 @@
                     </div>
                 </div>
             </div>
-            <hr>
         @endforeach
         <div class="clearfix"></div>
     </div>
@@ -93,7 +92,7 @@
         var city = $('#city');
         category.select2({
             placeholder: "Filter by Categories",
-              allowClear: true
+            allowClear: true
         });
         city.select2({
             placeholder: "Filter by Cities",
@@ -102,8 +101,8 @@
 
         setTimeout(function () {
             filter(city.val(), category.val());
-            category.append($("<option></option>").attr("value", 'All').text('All Categories').attr('selected',true));
-            city.append($("<option></option>").attr("value", 'All').text('All Cities').attr('selected',true));
+            category.append($("<option></option>").attr("value", 'All').text('All Categories').attr('selected', true));
+            city.append($("<option></option>").attr("value", 'All').text('All Cities').attr('selected', true));
         }, 500);
 
         $(document).on('change', '#city', function () {
