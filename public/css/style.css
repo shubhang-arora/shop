@@ -58,7 +58,7 @@ label {
 /*-----start-header----*/
 .header-top-strip {
     padding: 8px 0 14px 0;
-    background-color: #816263;
+    background-color: #337ab7;
 }
 
 .header-top-left ul li {
@@ -129,9 +129,9 @@ a.simpleCart_empty {
 }
 
 .logo a span {
-    color: #816263;
+    color: #337ab7;
     font-size: 35px;
-    border: 2px solid #816263;
+    border: 2px solid #337ab7;
     border-radius: 50%;
     width: 50px;
     display: block;
@@ -177,8 +177,8 @@ a.simpleCart_empty {
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
     background-color: transparent;
-    border: 1px solid #816263;
-    color: #816263;
+    border: 1px solid #337ab7;
+    color: #337ab7;
 }
 
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
@@ -206,7 +206,7 @@ ul.multi-column-dropdown h6 {
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 10px;
-    color: #816263;
+    color: #337ab7;
     padding: 0;
 }
 
@@ -238,7 +238,7 @@ ul.multi-column-dropdown h6 {
 
 .multi-column-dropdown li a:hover {
     text-decoration: none;
-    color: #816263;
+    color: #337ab7;
     background-color: #fff !important;
 }
 
@@ -266,7 +266,7 @@ ul.multi-column-dropdown h6 {
     font-size: 90px;
     font-weight: 600;
     line-height: 120px;
-    color: #816263;
+    color: #337ab7;
     transform: rotate(-15deg);
     -webkit-transform: rotate(-15deg);
     -o-transform: rotate(-15deg);
@@ -479,7 +479,7 @@ ul.multi-column-dropdown h6 {
 }
 
 .callbacks_here a:after {
-    background: #816263;
+    background: #337ab7;
 }
 
 .banner-info {
@@ -497,7 +497,7 @@ ul.multi-column-dropdown h6 {
 .banner-info p {
     font-size: 20px;
     font-weight: 300;
-    color: #816263;
+    color: #337ab7;
     margin: 20px 0;
 }
 
@@ -516,8 +516,8 @@ ul.multi-column-dropdown h6 {
 
 .shop a:hover {
     color: #fff;
-    background-color: #816263;
-    border: 1px solid #816263;
+    background-color: #337ab7;
+    border: 1px solid #337ab7;
 }
 
 /*-- online-strip --*/
@@ -551,7 +551,7 @@ ul.multi-column-dropdown h6 {
 }
 
 .online-strip h3 {
-    color: #816263;
+    color: #337ab7;
     font-size: 1.5em;
     padding: 0;
 }
@@ -588,7 +588,7 @@ a.facebook {
 /*-- online-strip --*/
 h3.head.text-center {
     font-size: 35px;
-    color: #816263;
+    color: #337ab7;
     font-weight: 500;
     padding: 0;
 }
@@ -663,7 +663,7 @@ a.product_name {
 
 .mask a:hover {
     text-decoration: none;
-    background: #816263;
+    background: #337ab7;
     color: #fff;
     transition: 0.7s all;
     -webkit-transition: 0.7s all;
@@ -709,7 +709,7 @@ a.product_name {
 /*--end-product--*/
 h3.like {
     font-size: 30px;
-    color: #816263;
+    color: #337ab7;
     font-weight: 500;
     padding: 0;
 }
@@ -841,7 +841,7 @@ a.like_name {
     cursor: pointer;
     width: 22%;
     padding: 6px 0 10px;
-    background: #816263;
+    background: #337ab7;
     color: #fff;
     font-size: 19px;
     font-weight: 400;
@@ -859,7 +859,7 @@ a.like_name {
 .span1_of_4 h4 {
     margin: 0 0 15px 0;
     font-size: 23px;
-    color: #816263;
+    color: #337ab7;
     text-transform: capitalize;
     font-weight: 500;
     padding: 0;
@@ -896,7 +896,7 @@ ul.f_nav li a {
 }
 
 .copyright p a {
-    color: #816263;
+    color: #337ab7;
 }
 
 /*-- footer-ends-here --*/
@@ -945,7 +945,7 @@ ul.product-list li a:hover {
 
 .product-listy h2 {
     color: #fff;
-    background: #816263;
+    background: #337ab7;
     font-size: 15px;
     padding: 23px;
     font-weight: 600;
@@ -1016,7 +1016,7 @@ ul.tags_links li a {
 
 ul.tags_links li a:hover {
     text-decoration: none;
-    background: #816263;
+    background: #337ab7;
     color: #fff;
 }
 
@@ -1056,7 +1056,7 @@ ul.product-top-list li {
 }
 
 ul.product-top-list li a {
-    color: #816263;
+    color: #337ab7;
     font-size: 16px;
 }
 
@@ -1402,7 +1402,7 @@ ul.product-list li a {
 }
 
 ul.product-list li a:hover {
-    background: #816263;
+    background: #337ab7;
     color: #fff;
     padding: 5px 2em;
     transition: 0.5s all;
@@ -1723,7 +1723,7 @@ ul.women_pagenation li.active a, ul.women_pagenation li a:hover {
 }
 
 li.home a {
-    color: #816263;
+    color: #337ab7;
     font-size: 16px;
 }
 
@@ -1736,7 +1736,7 @@ li.home a {
 }
 
 .acount-btn, .fileUp {
-    background: #816263;
+    background: #337ab7;
     color: #FFF;
     font-size: 15px;
     padding: 0.7em 1.2em;
@@ -1786,7 +1786,7 @@ li.home a {
 }
 
 .login-right input[type="submit"] {
-    background: #816263;
+    background: #337ab7;
     color: #FFF;
     font-size: 1em;
     padding: 0.7em 1.2em;
@@ -1899,7 +1899,7 @@ ul.women_pagenation li.active a {
 }
 
 ul.women_pagenation li a:hover {
-    background: #816263;
+    background: #337ab7;
     color: #fff;
 }
 
@@ -1944,7 +1944,7 @@ ul.women_pagenation li a:hover {
 
 .reg p a {
     text-decoration: none;
-    color: #816263;
+    color: #337ab7;
 }
 
 .reg p a:hover {
@@ -1968,7 +1968,7 @@ ul.women_pagenation li a:hover {
 
 .reg ul li.text-info {
     width: 38%;
-    color: #816263;
+    color: #337ab7;
     font-size: 16px;
     text-transform: uppercase;
     margin: 0 0 0px 0;
@@ -1996,7 +1996,7 @@ ul.women_pagenation li a:hover {
 }
 
 p.click a, a {
-    color: #816263;
+    color: #337ab7;
 }
 
 p.click a:hover, a:hover {
@@ -2017,7 +2017,7 @@ p.click a:hover, a:hover {
     cursor: pointer;
     font-weight: 500;
     margin: 0 0 32px 0;
-    background: #816263;
+    background: #337ab7;
     border-top: none;
     border-left: none;
     border-right: none;
@@ -2096,7 +2096,7 @@ p.click a:hover, a:hover {
     font-size: 14px;
     cursor: pointer;
     font-weight: 500;
-    background: #816263;
+    background: #337ab7;
 }
 
 .contact-form input[type=submit]:hover {
@@ -2229,7 +2229,7 @@ div#myTabContent {
     margin: 0 0 20px 0;
     text-align: center;
     font-size: 28px;
-    color: #816263;
+    color: #337ab7;
     font-weight: 600;
     padding: 0;
 }
@@ -2271,7 +2271,7 @@ div#myTabContent {
 }
 
 .cart-item-info h3 a {
-    color: #816263;
+    color: #337ab7;
     font-size: 18px;
 }
 
@@ -2342,7 +2342,7 @@ ul.qty li p {
 }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-    color: #816263;
+    color: #337ab7;
     cursor: default;
     font-size: 1.2em;
     font-weight: 600;
@@ -2423,7 +2423,7 @@ p.tab-text {
 }
 
 .media-left.response-text-left h5 a:hover {
-    color: #816263;
+    color: #337ab7;
 }
 
 .media-left.response-text-left img {
@@ -2507,7 +2507,7 @@ p.right {
 }
 
 .purchase a:hover {
-    color: #816263;
+    color: #337ab7;
 }
 
 .social-icons {
@@ -3696,7 +3696,7 @@ p.right {
 }
 
 .btn:hover {
-    background: #816263;
+    background: #337ab7;
     color: #ffffff;
 }
 
@@ -3705,13 +3705,13 @@ a#titleHeader {
 }
 
 .panel-default > .panel-heading {
-    background: #816263;
+    background: #337ab7;
     color: #ffffff;
 }
 
 a.offerTab:hover {
     text-decoration: none;
-    background: #816263;
+    background: #337ab7;
     color: #fff;
     transition: 0.7s all;
     -webkit-transition: 0.7s all;
