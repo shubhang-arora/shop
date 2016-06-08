@@ -3756,6 +3756,10 @@ a.offerTab:hover {
     display: block;
     margin: auto;
 }
+
+img#shopImage{
+
+}
 @media (max-width: 800px) {
     .carousel-inner>.item>img {
         height: auto !important;
