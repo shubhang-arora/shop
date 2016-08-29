@@ -146,6 +146,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
+        \Conner\Likeable\LikeableServiceProvider::class,
+
 
     ],
 

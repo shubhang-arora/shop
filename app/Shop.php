@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Conner\Likeable\LikeableTrait;
 
 class Shop extends Model
 {
+
+    use LikeableTrait;
 
     protected $fillable = [
         'shop_name',
