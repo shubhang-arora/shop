@@ -314,6 +314,7 @@ class ComposerStaticInit38ab7ccfcf205ac5f0b9c9c699e446b1
         'CreateShopTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_16_153609_create_shop_table.php',
         'CreateStateTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_16_154005_create_state_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
+        'CreateViewsTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_29_230554_create_views_table.php',
         'CreateZipcodeTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_16_154216_create_zipcode_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',

@@ -24,6 +24,7 @@ return array(
     'CreateShopTable' => $baseDir . '/database/migrations/2016_05_16_153609_create_shop_table.php',
     'CreateStateTable' => $baseDir . '/database/migrations/2016_05_16_154005_create_state_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
+    'CreateViewsTable' => $baseDir . '/database/migrations/2016_08_29_230554_create_views_table.php',
     'CreateZipcodeTable' => $baseDir . '/database/migrations/2016_05_16_154216_create_zipcode_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
