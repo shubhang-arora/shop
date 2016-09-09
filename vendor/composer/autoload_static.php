@@ -303,6 +303,7 @@ class ComposerStaticInit38ab7ccfcf205ac5f0b9c9c699e446b1
         'AddFavColumn' => __DIR__ . '/../..' . '/database/migrations/2016_05_30_040741_add_fav_column.php',
         'AddForeignKeyInShopTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_16_155821_add_foreign_key_in_shop_table.php',
         'AddTimestamps' => __DIR__ . '/../..' . '/database/migrations/2016_05_27_070024_add_timestamps.php',
+        'CategoriesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CategoriesTableSeeder.php',
         'CreateAddvertisementTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_16_154636_create_addvertisement_table.php',
         'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_16_154946_create_categories_table.php',
         'CreateCityTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_16_154041_create_city_table.php',
@@ -389,6 +390,7 @@ class ComposerStaticInit38ab7ccfcf205ac5f0b9c9c699e446b1
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
         'IlluminateQueueClosure' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+        'LocationSeeder' => __DIR__ . '/../..' . '/database/seeds/LocationSeeder.php',
         'PHPUnit_Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit_Extensions_GroupTestSuite' => __DIR__ . '/..' . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
         'PHPUnit_Extensions_PhptTestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',
@@ -823,6 +825,7 @@ class ComposerStaticInit38ab7ccfcf205ac5f0b9c9c699e446b1
         'SessionHandlerInterface' => __DIR__ . '/..' . '/symfony/http-foundation/Resources/stubs/SessionHandlerInterface.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

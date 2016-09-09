@@ -56,6 +56,11 @@ Route::post('search','ShopController@search');
 
 Route::post('like','ShopController@like');
 
+Route::post('upload/image','ShopController@upload');
+
+Route::get('/states/cities','ShopController@cities');
+Route::get('/states/cities/zipcodes','ShopController@zipcodes');
+
 Route::get('dd',function (){
     return view('test.test');
 });

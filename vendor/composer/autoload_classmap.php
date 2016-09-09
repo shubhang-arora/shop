@@ -13,6 +13,7 @@ return array(
     'AddFavColumn' => $baseDir . '/database/migrations/2016_05_30_040741_add_fav_column.php',
     'AddForeignKeyInShopTable' => $baseDir . '/database/migrations/2016_05_16_155821_add_foreign_key_in_shop_table.php',
     'AddTimestamps' => $baseDir . '/database/migrations/2016_05_27_070024_add_timestamps.php',
+    'CategoriesTableSeeder' => $baseDir . '/database/seeds/CategoriesTableSeeder.php',
     'CreateAddvertisementTable' => $baseDir . '/database/migrations/2016_05_16_154636_create_addvertisement_table.php',
     'CreateCategoriesTable' => $baseDir . '/database/migrations/2016_05_16_154946_create_categories_table.php',
     'CreateCityTable' => $baseDir . '/database/migrations/2016_05_16_154041_create_city_table.php',
@@ -99,6 +100,7 @@ return array(
     'Hamcrest\\Util' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
     'Hamcrest\\Xml\\HasXPath' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+    'LocationSeeder' => $baseDir . '/database/seeds/LocationSeeder.php',
     'PHPUnit_Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
     'PHPUnit_Extensions_GroupTestSuite' => $vendorDir . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
     'PHPUnit_Extensions_PhptTestCase' => $vendorDir . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',
@@ -533,4 +535,5 @@ return array(
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Resources/stubs/SessionHandlerInterface.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'UsersTableSeeder' => $baseDir . '/database/seeds/UsersTableSeeder.php',
 );

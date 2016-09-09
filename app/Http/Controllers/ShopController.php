@@ -25,10 +25,10 @@ class ShopController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'search', 'show', 'showOffer', 'offers','like']]);
+        $this->middleware('auth', ['except' => ['index', 'search', 'show', 'showOffer', 'offers','like','cities','zipcodes']]);
         $this->middleware('isAdmin', ['only' => ['approveAdvertisement', 'approvedAdvertisement', 'getShop', 'postShop', 'manageShop', 'adminDashboard']]);
         $this->middleware('addShop', ['only' => ['create', 'store']]);
-        $this->middleware('shouldHaveShop', ['except' => ['index', 'search', 'show', 'create', 'store', 'showOffer', 'offers','like']]);
+        $this->middleware('shouldHaveShop', ['except' => ['index', 'search', 'show', 'create', 'store', 'showOffer', 'offers','like','cities','zipcodes']]);
     }
 
     /**
@@ -54,9 +54,9 @@ class ShopController extends Controller
     {
 
         $categories = Category::lists('name', 'name');
-        $cities = City::lists('city_name', 'id');
         $states = State::lists('state_name', 'id');
-        $zipcodes = Zipcode::lists('code', 'id');
+        $cities = State::where('state_name',$states->first())->get()->first()->cities->lists('city_name', 'id');
+        $zipcodes = City::where('city_name',$cities->first())->get()->first()->zipcodes->lists('code', 'id');
         return view('Shop.register', compact('categories', 'cities', 'states', 'zipcodes'));
     }
 
@@ -387,5 +387,22 @@ class ShopController extends Controller
 
     }
 
+    public function cities(Request $request)
+    {
+        $id = $request->get('id');
+        $state = State::findorfail($id);
+        $cities = $state->cities->lists('city_name', 'id');
+
+        return $cities;
+    }
+
+    public function zipcodes(Request $request)
+    {
+        $id = $request->get('id');
+        $city = City::findorfail($id);
+        $zipcodes = $city->zipcodes->lists('code', 'id');
+
+        return $zipcodes;
+    }
 
 }
