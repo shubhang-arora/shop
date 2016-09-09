@@ -54,3 +54,9 @@ Route::get('admin-panel','ShopController@adminDashboard');
 
 Route::post('search','ShopController@search');
 
+Route::post('like','ShopController@like');
+
+Route::get('dd',function (){
+    return view('test.test');
+});
+

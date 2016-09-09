@@ -52,8 +52,15 @@
                     </div>
                     <div class="span span1">
                         <p class="col-xs-4">LOCATION</p>
-                        <p class="col-xs-6 col-xs-offset-2" id="address">{{$shop->location}}, {{$shop->zipcode->city->city_name}}<br>{{$shop->zipcode->city->state->state_name}} - {{$shop->zipcode->code}}</p>
+                        <p class="col-xs-6 col-xs-offset-2" id="address"><span id="location">{{$shop->location}}</span>,
+                            <span id="city">{{$shop->zipcode->city->city_name}}</span><br><span
+                                    id="state">{{$shop->zipcode->city->state->state_name}}</span> - <span
+                                    id="zipcode">{{$shop->zipcode->code}}</span></p>
                         <div class="clearfix"></div>
+                    </div>
+                    <div class="row">
+                        <div class="heart @if($liked) liked @endif col-xs-1" id="{{$shop->id}}" rel="like"></div>
+                        <div class="likeCount col-xs-11" id="{{$shop->id}}">{{$shop->likeCount}}</div>
                     </div>
 
                     <script src="{{asset('js/imagezoom.js')}}"></script>
@@ -70,11 +77,7 @@
                     </script>
                 </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div id="map"></div>
-                    </div>
-                </div>
+                <br><br>
                 <div class="row">
                     <div class="col-xs-12">
                         {!! Form::open(['action'=>'ShopController@sendMail','method'=>'post','id'=>'mailForm']) !!}
@@ -96,31 +99,33 @@
 
 @section('scripts')
     <script>
-        function initMap() {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 8,
-                center: {lat: -34.397, lng: 150.644}
-            });
-            var geocoder = new google.maps.Geocoder();
-            geocodeAddress(geocoder, map);
-        }
-
-        function geocodeAddress(geocoder, resultsMap) {
-            var address = $('p#address').text();
-            geocoder.geocode({'address': address}, function(results, status) {
-                if (status === google.maps.GeocoderStatus.OK) {
-                    resultsMap.setCenter(results[0].geometry.location);
-                    var marker = new google.maps.Marker({
-                        map: resultsMap,
-                        position: results[0].geometry.location
-                    });
-                } else {
-                    alert('Geocode was not successful for the following reason: ' + status);
+        $('body').on("click", '.heart', function () {
+            var id = $(this).attr("id");
+            $(this).css("background-position", "");
+            var liked = $(this).hasClass("liked");
+            if (liked) {
+                $(this).removeClass('liked');
+                $(this).removeClass('heartAnimation');
+                $('.likeCount').text(parseInt($('.likeCount').text()) - 1);
+            }
+            else {
+                $(this).addClass('liked');
+                $(this).addClass("heartAnimation").attr("rel", "unlike"); //applying animation class
+                $('.likeCount').text(parseInt($('.likeCount').text()) + 1);
+            }
+            $.ajax({
+                type: "POST",
+                url: "/like",
+                data: {'id': id, '_token': $('[name=_token]').attr('content')},
+                cache: false,
+                success: function (data) {
+                    var like = data.count;
+                    $('.likeCount').text(like);
                 }
             });
-        }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc7mptKA_kkJP2dmYZxvYzZt-iOKdKk7s&callback=initMap">
+
+
+        });
     </script>
 @endsection
 

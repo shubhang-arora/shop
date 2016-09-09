@@ -3768,3 +3768,46 @@ img#shopImage{
         margin: auto;
     }
 }
+
+.heart {
+    background: url(images/web_heart_animation.png) no-repeat left;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    background-size:1450px; //actual background size 2900px
+}
+
+.likeCount
+{
+    margin-top: 13px;
+    font-size: 16px;
+    color: #999999
+}
+
+.heart.liked{
+    background-position: right; //displaying last heart frame
+}
+@-webkit-keyframes heartBlast
+{
+    0% {background-position: left;}
+    100% {background-position: right;}
+}
+
+@keyframes heartBlast
+{
+    0% {background-position: left;}
+    100% {background-position: right;}
+}
+
+.heartAnimation
+{
+    -webkit-animation-name: heartBlast; //webkit broswers
+animation-name: heartBlast;
+    -webkit-animation-duration: .8s;
+    animation-duration: .8s;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -webkit-animation-timing-function: steps(28); //background frames count 28
+animation-timing-function: steps(28);
+    background-position: right;
+}

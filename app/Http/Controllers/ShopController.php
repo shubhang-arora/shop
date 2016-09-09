@@ -25,10 +25,10 @@ class ShopController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'search', 'show', 'showOffer', 'offers']]);
+        $this->middleware('auth', ['except' => ['index', 'search', 'show', 'showOffer', 'offers','like']]);
         $this->middleware('isAdmin', ['only' => ['approveAdvertisement', 'approvedAdvertisement', 'getShop', 'postShop', 'manageShop', 'adminDashboard']]);
         $this->middleware('addShop', ['only' => ['create', 'store']]);
-        $this->middleware('shouldHaveShop', ['except' => ['index', 'search', 'show', 'create', 'store', 'showOffer', 'offers']]);
+        $this->middleware('shouldHaveShop', ['except' => ['index', 'search', 'show', 'create', 'store', 'showOffer', 'offers','like']]);
     }
 
     /**
@@ -120,34 +120,8 @@ class ShopController extends Controller
      */
     public function show($id)
     {
-        if (!empty($_SERVER['HTTP_CLIENT_IP']))
-        {
-            $ip_address = $_SERVER['HTTP_CLIENT_IP'];
-        }
-
-        if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            if (strpos($_SERVER['HTTP_X_FORWARDED_FOR'], ',') !== false) {
-                $iplist = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
-                foreach ($iplist as $ip) {
-                    $ip_address = $ip;
-                }
-            } else {
-                $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
-            }
-        }
-
-        if (!empty($_SERVER['HTTP_X_FORWARDED'])) {
-            $ip_address = $_SERVER['HTTP_X_FORWARDED'];
-        } elseif (!empty($_SERVER['HTTP_X_CLUSTER_CLIENT_IP'])) {
-            $ip_address = $_SERVER['HTTP_X_CLUSTER_CLIENT_IP'];
-        } elseif (!empty($_SERVER['HTTP_FORWARDED_FOR'])) {
-            $ip_address = $_SERVER['HTTP_FORWARDED_FOR'];
-        } elseif (!empty($_SERVER['HTTP_FORWARDED'])) {
-            $ip_address = $_SERVER['HTTP_FORWARDED'];
-        } else {
-            $ip_address = $_SERVER['REMOTE_ADDR'];
-        }
-
+        $ip_address = request()->ip();
+        $liked = DB::table('ip_address')->where('ip', $ip_address)->count() > 0;
         $shop = Shop::findorfail($id);
         if(!(DB::table('views')->where('ip',$ip_address)->count()>0))
         {
@@ -156,7 +130,7 @@ class ShopController extends Controller
                 'shop_id'   =>  $shop->id
             ]);
         }
-        return view('Shop.single', compact('shop'));
+        return view('Shop.single', compact('shop', 'liked'));
     }
 
     /**
@@ -396,37 +370,19 @@ class ShopController extends Controller
 
     public function like(Request $request)
     {
-        if (!empty($_SERVER['HTTP_CLIENT_IP']))
-        {
-            $ip_address = $_SERVER['HTTP_CLIENT_IP'];
-        }
-
-        if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            if (strpos($_SERVER['HTTP_X_FORWARDED_FOR'], ',') !== false) {
-                $iplist = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
-                foreach ($iplist as $ip) {
-                    $ip_address = $ip;
-                }
-            } else {
-                $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
-            }
-        }
-
-        if (!empty($_SERVER['HTTP_X_FORWARDED'])) {
-            $ip_address = $_SERVER['HTTP_X_FORWARDED'];
-        } elseif (!empty($_SERVER['HTTP_X_CLUSTER_CLIENT_IP'])) {
-            $ip_address = $_SERVER['HTTP_X_CLUSTER_CLIENT_IP'];
-        } elseif (!empty($_SERVER['HTTP_FORWARDED_FOR'])) {
-            $ip_address = $_SERVER['HTTP_FORWARDED_FOR'];
-        } elseif (!empty($_SERVER['HTTP_FORWARDED'])) {
-            $ip_address = $_SERVER['HTTP_FORWARDED'];
-        } else {
-            $ip_address = $_SERVER['REMOTE_ADDR'];
-        }
-
         $shop = Shop::find($request->input('id'));
-        $shop->like(0);
-        DB::table('ip_address')->insert('ip',$ip_address);
+        $ip_address = request()->ip();
+        $liked = DB::table('ip_address')->where('ip', $ip_address)->count() > 0;
+        if ($liked) {
+            $shop->unlike(0);
+            DB::table('ip_address')->where('ip', $ip_address)->delete();
+            return ['count'=>$shop->likeCount];
+        } else {
+            $shop->like(0);
+            DB::table('ip_address')->insert(['ip'=>$ip_address]);
+            return ['count'=>$shop->likeCount];
+        }
+
     }
 
 
