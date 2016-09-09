@@ -2444,9 +2444,9 @@ p.tab-text {
 
 .dress-name p {
     margin-top: 16px;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 23px;
-    color: #CAC9C9;
+    color: #989797;
 }
 
 .dress-name span {
@@ -3781,7 +3781,7 @@ img#shopImage{
 {
     margin-top: 13px;
     font-size: 16px;
-    color: #999999
+    color: #6E6E6E
 }
 
 .heart.liked{
@@ -3810,4 +3810,8 @@ animation-name: heartBlast;
     -webkit-animation-timing-function: steps(28); //background frames count 28
 animation-timing-function: steps(28);
     background-position: right;
+}
+
+.fb-invite-img{
+    margin: 0 auto;
 }

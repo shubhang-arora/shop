@@ -14,6 +14,21 @@
     @yield('content')
     @include('includes.footer')
 
+    <script src='http://connect.facebook.net/en_US/all.js'></script>
+    <script>
+        FB.init({
+            appId: '308477322845753',
+            cookie: true,
+            status: true,
+            xfbml: true
+        });
+        function FacebookInviteFriends() {
+            FB.ui({
+                method: 'apprequests',
+                message: 'Invite your friends'
+            });
+        }
+    </script>
     @yield('scripts')
 </body>
 </html>
