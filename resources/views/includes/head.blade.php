@@ -19,4 +19,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="{{asset('css/flexslider.css')}}" type="text/css" media="screen" />
 <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
 <meta name="_token" content="{{ csrf_token() }}">
+<script src="https://use.fontawesome.com/47c04783bd.js"></script>
+<meta property="og:url" content="{{request()->url()}}"/>
+<meta property="og:type" content="company"/>
+<meta property="fb:app_id" content="308477322845753"/>
+
 @yield('head')

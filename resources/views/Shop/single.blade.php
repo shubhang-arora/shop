@@ -59,9 +59,19 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="row">
-                        <div class="likeCount col-xs-2">Views: {{$shop->views->count()}}</div>
-                        <div class="heart @if($liked) liked @endif col-xs-1" id="{{$shop->id}}" rel="like"></div>
-                        <div class="likeCount col-xs-7" id="{{$shop->id}}">{{$shop->likeCount}}</div>
+                        <div class="likeCount col-sm-2 col-xs-4">Views: {{$shop->views->count()}}</div>
+                        <div class="heart @if($liked) liked @endif col-sm-1 col-xs-2" id="{{$shop->id}}" rel="like">
+                        </div>
+                        {{--<i class="fa fa-heart-o" style="font-size: larger; color: #2f95ff " aria-hidden="true"></i>--}}
+                        {{--<i class="fa fa-heart" style="font-size: larger; color: #2f95ff " aria-hidden="true"></i>--}}
+
+                        <div class="likeCount col-sm-1 col-xs-2" style="right: 3%"
+                             id="{{$shop->id}}">{{$shop->likeCount}}</div>
+                        <div class="col-sm-7 col-xs-4 likeCount">
+                            <div class="fb-share-button" data-href="{{request()->url()}}"
+                                 data-layout="button"></div>
+                        </div>
+
                     </div>
 
                     <script src="{{asset('js/imagezoom.js')}}"></script>
@@ -133,4 +143,20 @@
 
 @section('head')
     <title>{{$shop->shop_name}} - Businessway</title>
+
+
+    <meta property="og:title" content="{{$shop->shop_name}}"/>
+    <meta property="og:description" content="{{$shop->description}}"/>
+    {{--*/$fav=0/*--}}
+    @foreach($shop->images as $img)
+        @if($img->fav)
+            {{--*/$fav=1/*--}}
+            <meta property="og:image" content="{!! request()->getSchemeAndHttpHost().$img->link !!}"/>
+            <meta property="og:image:width" content="400"/>
+        @endif
+        @if(!$fav)
+            <meta property="og:image" content="{!! request()->getSchemeAndHttpHost().$shop->images[0]->link !!}"/>
+            <meta property="og:image:width" content="400"/>
+        @endif
+    @endforeach
 @endsection

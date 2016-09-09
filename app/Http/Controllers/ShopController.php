@@ -120,9 +120,11 @@ class ShopController extends Controller
      */
     public function show($id)
     {
+
         $ip_address = request()->ip();
         $liked = DB::table('ip_address')->where('ip', $ip_address)->count() > 0;
         $shop = Shop::findorfail($id);
+
         if(!(DB::table('views')->where('ip',$ip_address)->count()>0))
         {
             DB::table('views')->insert([
