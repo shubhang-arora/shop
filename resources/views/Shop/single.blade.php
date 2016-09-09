@@ -59,8 +59,9 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="row">
+                        <div class="likeCount col-xs-2">Views: {{$shop->views->count()}}</div>
                         <div class="heart @if($liked) liked @endif col-xs-1" id="{{$shop->id}}" rel="like"></div>
-                        <div class="likeCount col-xs-11" id="{{$shop->id}}">{{$shop->likeCount}}</div>
+                        <div class="likeCount col-xs-7" id="{{$shop->id}}">{{$shop->likeCount}}</div>
                     </div>
 
                     <script src="{{asset('js/imagezoom.js')}}"></script>
@@ -104,14 +105,15 @@
             $(this).css("background-position", "");
             var liked = $(this).hasClass("liked");
             if (liked) {
+                console.log();
                 $(this).removeClass('liked');
                 $(this).removeClass('heartAnimation');
-                $('.likeCount').text(parseInt($('.likeCount').text()) - 1);
+                $('.likeCount[id="'+id+'"').text(parseInt($('.likeCount[id="'+id+'"').text()) - 1);
             }
             else {
                 $(this).addClass('liked');
                 $(this).addClass("heartAnimation").attr("rel", "unlike"); //applying animation class
-                $('.likeCount').text(parseInt($('.likeCount').text()) + 1);
+                $('.likeCount[id="'+id+'"').text(parseInt($('.likeCount[id="'+id+'"').text()) + 1);
             }
             $.ajax({
                 type: "POST",
@@ -119,8 +121,8 @@
                 data: {'id': id, '_token': $('[name=_token]').attr('content')},
                 cache: false,
                 success: function (data) {
-                    var like = data.count;
-                    $('.likeCount').text(like);
+                        var like = data.count;
+                    $('.likeCount[id="'+id+'"').text(like);
                 }
             });
 
