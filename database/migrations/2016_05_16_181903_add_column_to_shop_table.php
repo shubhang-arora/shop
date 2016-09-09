@@ -26,7 +26,8 @@ class AddColumnToShopTable extends Migration
     public function down()
     {
         Schema::table('shops', function (Blueprint $table) {
-            //
+            $table->dropColumn('added');
+            $table->dropColumn('deleted');
         });
     }
 }

@@ -22,6 +22,11 @@ class CreateShopTable extends Migration
             $table->integer('premium_shop')->default(0);
             $table->text('description');
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 

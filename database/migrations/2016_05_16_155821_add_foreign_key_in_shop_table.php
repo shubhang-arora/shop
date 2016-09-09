@@ -28,7 +28,7 @@ class AddForeignKeyInShopTable extends Migration
     public function down()
     {
         Schema::table('shops', function (Blueprint $table) {
-            //
+            $table->dropForeign('shops_zipcode_id_foreign');
         });
     }
 }

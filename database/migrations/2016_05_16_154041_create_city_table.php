@@ -18,8 +18,6 @@ class CreateCityTable extends Migration
             $table->string('city_name');
             $table->timestamps();
 
-
-
             $table->foreign('state_id')
                 ->references('id')
                 ->on('states')
