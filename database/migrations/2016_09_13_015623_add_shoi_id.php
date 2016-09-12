@@ -30,7 +30,7 @@ class AddShoiId extends Migration
     public function down()
     {
         Schema::table('ip_address', function (Blueprint $table) {
-            //
+            $table->dropColumn('shop_id');
         });
     }
 }

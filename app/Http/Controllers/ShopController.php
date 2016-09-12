@@ -290,6 +290,12 @@ class ShopController extends Controller
         $add = ($request->input('add') === 'true');
         if ($request->input('type') === 'do') {
             if ($add) {
+                if($shop->premium_shop)
+                {
+                    $shop->update([
+                        'expiry_date'   => $request->input('date')
+                    ]);
+                }
                 $shop->update(['added' => 1]);
 
                 return 1;

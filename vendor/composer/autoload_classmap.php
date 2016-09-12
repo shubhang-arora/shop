@@ -10,6 +10,7 @@ return array(
     'AddBannerColumn' => $baseDir . '/database/migrations/2016_05_30_070441_add_banner_column.php',
     'AddColumnToShopTable' => $baseDir . '/database/migrations/2016_05_16_181903_add_column_to_shop_table.php',
     'AddDeletedColumn' => $baseDir . '/database/migrations/2016_05_19_154442_add_deleted_column.php',
+    'AddExpiryDate' => $baseDir . '/database/migrations/2016_09_13_021054_add_expiry_date.php',
     'AddFavColumn' => $baseDir . '/database/migrations/2016_05_30_040741_add_fav_column.php',
     'AddForeignKeyInShopTable' => $baseDir . '/database/migrations/2016_05_16_155821_add_foreign_key_in_shop_table.php',
     'AddShoiId' => $baseDir . '/database/migrations/2016_09_13_015623_add_shoi_id.php',

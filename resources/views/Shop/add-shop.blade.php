@@ -15,7 +15,7 @@
                 <a class="product_name" href="{{action('ShopController@show',$shop->id)}}">{{$shop->shop_name}}</a>
                 <p><a class="item_add" href="#"><i></i> <span class="item_price">Owner : {{$shop->user->user_name}}</span></a></p>
                 <br><br>
-                <a href="#!"><i class="glyphicon glyphicon-ok text-success add-remove add" id="{{$shop->id}}" aria-hidden="true" style="font-size: larger"></i>
+                <a href="#!"><i class="glyphicon glyphicon-ok text-success add-remove add" id="{{$shop->id}}" value="{{$shop->premium_shop}}" aria-hidden="true" style="font-size: larger"></i>
                 &nbsp;
                 <i class="glyphicon glyphicon-remove text-danger add-remove remove" id="{{$shop->id}}" aria-hidden="true" style="font-size: larger"></i></a>
             </div>
