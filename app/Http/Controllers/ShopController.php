@@ -374,14 +374,19 @@ class ShopController extends Controller
     {
         $shop = Shop::find($request->input('id'));
         $ip_address = request()->ip();
-        $liked = DB::table('ip_address')->where('ip', $ip_address)->count() > 0;
+        $liked = DB::table('ip_address')->where('ip', $ip_address)->where('shop_id',$request->input('id'))->count() > 0;
         if ($liked) {
             $shop->unlike(0);
-            DB::table('ip_address')->where('ip', $ip_address)->delete();
+            DB::table('ip_address')->where('ip', $ip_address)->where('shop_id',$request->input('id'))->delete();
             return ['count'=>$shop->likeCount];
         } else {
             $shop->like(0);
-            DB::table('ip_address')->insert(['ip'=>$ip_address]);
+            DB::table('ip_address')->insert(
+                [
+                    'ip'=>          $ip_address,
+                    'shop_id'   =>  $request->input('id')
+                ]
+            );
             return ['count'=>$shop->likeCount];
         }
 

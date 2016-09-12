@@ -302,6 +302,7 @@ class ComposerStaticInit38ab7ccfcf205ac5f0b9c9c699e446b1
         'AddDeletedColumn' => __DIR__ . '/../..' . '/database/migrations/2016_05_19_154442_add_deleted_column.php',
         'AddFavColumn' => __DIR__ . '/../..' . '/database/migrations/2016_05_30_040741_add_fav_column.php',
         'AddForeignKeyInShopTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_16_155821_add_foreign_key_in_shop_table.php',
+        'AddShoiId' => __DIR__ . '/../..' . '/database/migrations/2016_09_13_015623_add_shoi_id.php',
         'AddTimestamps' => __DIR__ . '/../..' . '/database/migrations/2016_05_27_070024_add_timestamps.php',
         'CategoriesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CategoriesTableSeeder.php',
         'CreateAddvertisementTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_16_154636_create_addvertisement_table.php',

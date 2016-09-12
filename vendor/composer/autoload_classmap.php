@@ -12,6 +12,7 @@ return array(
     'AddDeletedColumn' => $baseDir . '/database/migrations/2016_05_19_154442_add_deleted_column.php',
     'AddFavColumn' => $baseDir . '/database/migrations/2016_05_30_040741_add_fav_column.php',
     'AddForeignKeyInShopTable' => $baseDir . '/database/migrations/2016_05_16_155821_add_foreign_key_in_shop_table.php',
+    'AddShoiId' => $baseDir . '/database/migrations/2016_09_13_015623_add_shoi_id.php',
     'AddTimestamps' => $baseDir . '/database/migrations/2016_05_27_070024_add_timestamps.php',
     'CategoriesTableSeeder' => $baseDir . '/database/seeds/CategoriesTableSeeder.php',
     'CreateAddvertisementTable' => $baseDir . '/database/migrations/2016_05_16_154636_create_addvertisement_table.php',
