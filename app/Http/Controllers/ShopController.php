@@ -52,7 +52,6 @@ class ShopController extends Controller
      */
     public function create()
     {
-
         $categories = Category::lists('name', 'name');
         $states = State::lists('state_name', 'id');
         $cities = State::where('state_name',$states->first())->get()->first()->cities->lists('city_name', 'id');
@@ -397,7 +396,8 @@ class ShopController extends Controller
         $id = $request->get('id');
         $state = State::findorfail($id);
         $cities = $state->cities->lists('city_name', 'id');
-
+        if($cities->isEmpty())
+            $cities=[-1=>'No Cities'];
         return $cities;
     }
 
