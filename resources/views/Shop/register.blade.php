@@ -28,15 +28,13 @@
                         @if($errors->any())
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="page-content">
-                                        @include('errors.list')
-                                    </div>
+                                    @include('errors.list')
                                 </div>
                             </div>
                         @endif
                         <p>Welcome, please enter the following details to continue.</p>
                         <p>If you have previously registered with us, <a href="#">click here</a></p>
-                        {!! Form::open(['action'=>'ShopController@store', 'enctype'=>"multipart/form-data"]) !!}
+                        {!! Form::open(['id'=>'shopRegister','action'=>'ShopController@store', 'enctype'=>"multipart/form-data"]) !!}
                         {!! csrf_field() !!}
                         <ul>
                             <li class="text-info">{!! Form::label('shop_name','Shop Name:') !!}</li>
@@ -77,39 +75,23 @@
 
                         <ul>
                             <li class="text-info">{!! Form::label('description','Description') !!}</li>
-                            <li class="text-info">{!! Form::textarea('description',null) !!}</li>
+                            <li class="text-info">{!! Form::textarea('description',null,['cols'=>'30','rows'=>'5']) !!}</li>
                         </ul>
 
                         <ul>
                             <li class="text-info">{!! Form::label('password','Password') !!}</li>
                             <li class="text-info">{!! Form::password('password',null) !!}</li>
                         </ul>
+                        <div id="upload_images" class="dropzone"></div>
 
-                        <ul>
-                            <div id="upload_images">
-
-                            </div>
-                        </ul>
-
+                        <br>
                         {!! Recaptcha::render() !!}
                         <input type="submit" value="Register Shop">
                         {!! Form::close() !!}
+
                     </div>
                 </div>
-                <div class="reg-right">
-                    <h3>Completely Free Account</h3>
-                    <div class="strip"></div>
-                    <p>Pellentesque neque leo, dictum sit amet accumsan non, dignissim ac mauris. Mauris rhoncus, lectus
-                        tincidunt tempus aliquam, odio
-                        libero tincidunt metus, sed euismod elit enim ut mi. Nulla porttitor et dolor sed condimentum.
-                        Praesent porttitor lorem dui, in pulvinar enim rhoncus vitae. Curabitur tincidunt, turpis ac
-                        lobortis hendrerit, ex elit vestibulum est, at faucibus erat ligula non neque.</p>
-                    <h3 class="lorem">Lorem ipsum dolor.</h3>
-                    <div class="strip"></div>
-                    <p>Tincidunt metus, sed euismod elit enim ut mi. Nulla porttitor et dolor sed condimentum. Praesent
-                        porttitor lorem dui, in pulvinar enim rhoncus vitae. Curabitur tincidunt, turpis ac lobortis
-                        hendrerit, ex elit vestibulum est, at faucibus erat ligula non neque.</p>
-                </div>
+
                 <div class="clearfix"></div>
             </div>
         </div>
@@ -127,12 +109,34 @@
         });
     </script>
     <script>
-        $("div#upload_images").dropzone({url: "upload/image"});
+        var count = 0;
+        Dropzone.autoDiscover = false;
+        var imageUploadDropzone = new Dropzone("div#upload_images", {
+            url: "/upload/image",
+            addRemoveLinks: true,
+            acceptedFiles: 'image/*',
+            dictDefaultMessage: 'Upload images which describe your business<br>First image will be selected as thumbnail'
+        });
+        imageUploadDropzone.on('sending', function (file, xhr, formData) {
+            formData.append('_token', $('[name=_token]').attr('content'));
+        });
+        imageUploadDropzone.on('success', function (file, data) {
+            data = JSON.parse(data);
+
+            $('<input>').attr({
+                type: 'hidden',
+                name: 'image'+count,
+                value: data.path
+            }).appendTo('form');
+            count++;
+        });
     </script>
 @endsection
 
 @section('head')
     <title>Create Shop - Businessway</title>
+    {!! HTML::style('css/dropzone.css') !!}
+    {!! HTML::script('js/dropzone.js') !!}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 @endsection

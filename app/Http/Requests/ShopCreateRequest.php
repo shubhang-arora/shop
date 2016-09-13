@@ -32,7 +32,6 @@ class ShopCreateRequest extends Request
             'description' => 'required',
             'password' => 'required',
             'categories' => 'required',
-            'image' => 'image'
         ];
     }
 }

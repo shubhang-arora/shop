@@ -32,5 +32,3 @@
         $('body').append('<script src="{{asset('js/filter_zip_city_state.js')}}">');
     }
 </script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>

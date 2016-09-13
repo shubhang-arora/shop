@@ -9,7 +9,8 @@ class Image extends Model
 
     protected $fillable = [
         'shop_id',
-        'link'
+        'link',
+        'fav'
     ];
 
     public function shop()

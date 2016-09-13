@@ -26,12 +26,12 @@ class CreateCategoriesTable extends Migration
             $table->foreign('shop_id')
                 ->references('id')
                 ->on('shops')
-                ->ondelete('cascade');
+                ->onDelete('cascade');
 
             $table->foreign('category_id')
                 ->references('id')
                 ->on('categories')
-                ->ondelete('cascade');
+                ->onDelete('cascade');
 
         });
     }

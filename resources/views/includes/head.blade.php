@@ -1,6 +1,9 @@
 <link href="{{asset('css/bootstrap.css')}}" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="{{asset('js/jquery.min.js')}}"></script>
+<script>
+
+</script>
 <!-- Custom Theme files -->
 <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
 <!-- Custom Theme files -->

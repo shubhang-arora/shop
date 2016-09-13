@@ -25,10 +25,18 @@ class ShopController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'search', 'show', 'showOffer', 'offers','like','cities','zipcodes']]);
+        $this->middleware('auth', ['except' => ['index', 'search', 'show', 'showOffer', 'offers', 'like', 'cities', 'zipcodes', 'upload', 'diedump']]);
         $this->middleware('isAdmin', ['only' => ['approveAdvertisement', 'approvedAdvertisement', 'getShop', 'postShop', 'manageShop', 'adminDashboard']]);
         $this->middleware('addShop', ['only' => ['create', 'store']]);
-        $this->middleware('shouldHaveShop', ['except' => ['index', 'search', 'show', 'create', 'store', 'showOffer', 'offers','like','cities','zipcodes']]);
+        $this->middleware('shouldHaveShop', ['except' => ['index', 'search', 'show', 'create', 'store', 'showOffer', 'offers', 'like', 'cities', 'zipcodes', 'upload', 'diedump']]);
+    }
+
+    /**
+     * Used for debugging
+     */
+    public function diedump(Request $request)
+    {
+
     }
 
     /**
@@ -67,7 +75,17 @@ class ShopController extends Controller
      */
     public function store(Requests\ShopCreateRequest $request)
     {
+        $images = [];
+        foreach ($request->all() as $key => $value) {
+            if (substr($key, 0, 5) === 'image') {
+                array_push($images, ['link' => $value]);
+            }
+        }
+        $request['images'] = $images;
 
+        $this->validate($request, [
+            'images' => 'required'
+        ]);
 
         $user = Auth::user();
         $password = $request->input('password');
@@ -85,14 +103,14 @@ class ShopController extends Controller
 
             ]);
             $this->syncCategories($shop, $request->input('categories'));
-            $destinationPath = 'uploads'; // upload path
-            $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
-            $fileName = rand(11111, 99999) . '.' . $extension; // renaming image
-            Input::file('image')->move($destinationPath, $fileName);
 
-            $shop->images()->create([
-                'link' => '/uploads/' . $fileName
-            ]);
+
+            foreach ($images as $key => $image) {
+                if ($key == 0) {
+                    $image['fav'] = 1;
+                }
+                $shop->images()->create($image);
+            }
 
             return redirect('/');
         } else {
@@ -403,6 +421,17 @@ class ShopController extends Controller
         $zipcodes = $city->zipcodes->lists('code', 'id');
 
         return $zipcodes;
+    }
+
+    public function upload(Request $request)
+    {
+        $destinationPath = 'uploads/'; // upload path
+        $extension = $request->file('file')->getClientOriginalExtension(); // getting image extension
+        Input::file('file')->move($destinationPath, time() . '_' . $request->file('file')->getClientOriginalName());
+
+        return json_encode([
+            'path' => $destinationPath . time() . '_' . $request->file('file')->getClientOriginalName()
+        ]);
     }
 
 }
