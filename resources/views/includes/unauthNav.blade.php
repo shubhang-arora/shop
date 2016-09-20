@@ -18,7 +18,6 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="{{url('/offers')}}">All offers</a></li>
-
                         <li><a href="{{url('/auth/login')}}"><span class="glyphicon glyphicon-user"> </span>&nbsp;Login</a></li>
                         <li><a href="{{url('/auth/register')}}"><span class="glyphicon glyphicon-lock"> </span>&nbsp;Register</a></li>
                     </ul>
