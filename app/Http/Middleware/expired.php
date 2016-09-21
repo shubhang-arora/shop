@@ -21,12 +21,23 @@ class expired
             if (Auth::user()->shop != null) {
                 $shop = Auth::user()->shop;
                 if ($shop->premium_shop && $shop->added && !$shop->deleted) {
-                    if (Carbon::parse($shop->expiry_date)->diffInDays(Carbon::now()) < 7) {
+                    $days_to_expire = Carbon::parse($shop->expiry_date);
+                    if ($days_to_expire->isToday()) {
                         session([
-                            'expired' => true
+                            'expires_in' => 0
                         ]);
-                    } else {
-                        session()->forget('expired');
+                    } else if ($days_to_expire->isPast()) {
+                        session([
+                            'expires_in' => -1
+                        ]);
+                    } else if ($days_to_expire->isFuture()) {
+                        if ($days_to_expire->diffInDays(Carbon::now()->startOfDay()) < 7) {
+                            session([
+                                'expires_in' => $days_to_expire->diffInDays(Carbon::now()->startOfDay())
+                            ]);
+                        } else {
+                            session()->forget('expires_in');
+                        }
                     }
                 }
             }
