@@ -42,14 +42,16 @@
                     <form method="POST" id="loginForm" action="{{action('Auth\AuthController@postLogin')}}">
                         {!! csrf_field() !!}
                         <div>
-                            <span>Email Address<label>*</label></span>
+                            <label>Email Address</label>
                             <input type="text" name="email" value="{{ old('email') }}">
                         </div>
                         <div>
-                            <span>Password<label>*</label></span>
+                            <label>Password</label>
                             <input type="password" name="password" id="password">
                         </div>
-
+                        <div class="rememberme">
+                            <label><input type="checkbox" name="remember"> Remember Me</label>
+                        </div>
                         <input type="submit" value="Login">
                     </form>
                 </div>
