@@ -16,11 +16,11 @@ class shouldHaveShop
      */
     public function handle($request, Closure $next)
     {
-        if(!Auth::user()->admin)
-        {
-            if(Auth::user()->shop==null)
-            {
+        if (Auth::check()) {
+            if (!Auth::user()->admin) {
+                if (Auth::user()->shop == null) {
                 return redirect('/shop/register');
+            }
             }
         }
         return $next($request);

@@ -28,7 +28,7 @@ class ShopController extends Controller
         $this->middleware('auth', ['except' => ['index', 'search', 'show', 'showOffer', 'offers', 'like', 'cities', 'zipcodes', 'upload', 'diedump']]);
         $this->middleware('isAdmin', ['only' => ['approveAdvertisement', 'approvedAdvertisement', 'getShop', 'postShop', 'manageShop', 'adminDashboard']]);
         $this->middleware('addShop', ['only' => ['create', 'store']]);
-        $this->middleware('shouldHaveShop', ['except' => ['index', 'search', 'show', 'create', 'store', 'showOffer', 'offers', 'like', 'cities', 'zipcodes', 'upload', 'diedump']]);
+        $this->middleware('shouldHaveShop', ['except' => [ 'search', 'create', 'store', 'like', 'cities', 'zipcodes', 'upload', 'diedump']]);
     }
 
     /**

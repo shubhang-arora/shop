@@ -18,15 +18,16 @@ class expired
     public function handle($request, Closure $next)
     {
         if (Auth::check()) {
-            $shop = Auth::user()->shop;
-            if ($shop->premium_shop && $shop->added && !$shop->deleted) {
-                if (Carbon::parse($shop->expiry_date)->diffInDays(Carbon::now()) < 7) {
-                    session([
-                        'expired' => true
-                    ]);
-                }
-                else{
-                    session()->forget('expired');
+            if (Auth::user()->shop != null) {
+                $shop = Auth::user()->shop;
+                if ($shop->premium_shop && $shop->added && !$shop->deleted) {
+                    if (Carbon::parse($shop->expiry_date)->diffInDays(Carbon::now()) < 7) {
+                        session([
+                            'expired' => true
+                        ]);
+                    } else {
+                        session()->forget('expired');
+                    }
                 }
             }
         }
