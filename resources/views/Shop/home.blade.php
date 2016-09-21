@@ -100,10 +100,13 @@
         });
 
         setTimeout(function () {
-            filter(city.val(), category.val());
             category.append($("<option></option>").attr("value", 'All').text('All Categories').attr('selected', true));
             city.append($("<option></option>").attr("value", 'All').text('All Cities').attr('selected', true));
-        }, 500);
+        }, 10);
+
+        setTimeout(function () {
+            filter('All', 'All');
+        }, 100);
 
         $(document).on('change', '#city', function () {
             setTimeout(function () {
