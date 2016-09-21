@@ -18,6 +18,7 @@ class Kernel extends HttpKernel
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         \App\Http\Middleware\VerifyCsrfToken::class,
+        \App\Http\Middleware\expired::class,
     ];
 
     /**
@@ -32,5 +33,6 @@ class Kernel extends HttpKernel
         'isAdmin'   =>  \App\Http\Middleware\isAdmin::class,
         'addShop'   =>  \App\Http\Middleware\addShop::class,
         'shouldHaveShop'    =>  \App\Http\Middleware\shouldHaveShop::class,
+
     ];
 }

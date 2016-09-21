@@ -36,7 +36,8 @@ class ShopController extends Controller
      */
     public function diedump(Request $request)
     {
-
+        $carbon = Carbon::parse("09/28/2016");
+        dd($carbon->toDateString());
     }
 
     /**
@@ -304,15 +305,15 @@ class ShopController extends Controller
 
     public function postShop(Request $request)
     {
+
         $shop = Shop::find($request->input('id'));
         $add = ($request->input('add') === 'true');
         if ($request->input('type') === 'do') {
             if ($add) {
                 if($shop->premium_shop)
                 {
-                    $shop->update([
-                        'expiry_date'   => $request->input('date')
-                    ]);
+                    $shop->expiry_date=Carbon::parse($request->input('expiry_date'))->toDateString();
+                    $shop->save();
                 }
                 $shop->update(['added' => 1]);
 
