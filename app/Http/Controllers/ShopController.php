@@ -37,8 +37,7 @@ class ShopController extends Controller
      */
     public function diedump(Request $request)
     {
-        $carbon = Carbon::parse("09/28/2016");
-        dd($carbon->toDateString());
+        return view('test.test');
     }
 
     /**
