@@ -19,8 +19,8 @@ class shouldHaveShop
         if (Auth::check()) {
             if (!Auth::user()->admin) {
                 if (Auth::user()->shop == null) {
-                return redirect('/shop/register');
-            }
+                    return redirect('/shop/register');
+                }
             }
         }
         return $next($request);

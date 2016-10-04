@@ -23,7 +23,7 @@
 
 <body class="signup-page">
 <div class="wrapper">
-    <div class="header header-filter" style="background-size: cover; background: url('{{asset('/img/city.jpg')}}'">
+    <div class="header header-filter" style="background-size: cover; background: url('{{asset('/img/city.jpg')}}')">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 col-sm-12 ">

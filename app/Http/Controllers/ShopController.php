@@ -34,8 +34,9 @@ class ShopController extends Controller
 
     /**
      * Used for debugging
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function diedump(Request $request)
+    public function diedump()
     {
         return view('test.test');
     }
@@ -51,6 +52,7 @@ class ShopController extends Controller
         $shops = Shop::latest('created_at')->where('added', 1)->where('deleted', 0)->get();
         $categories = Category::lists('name', 'id');
         $cities = City::lists('city_name', 'id');
+
         return view('Shop.home', compact('shops', 'categories', 'cities','adverts'));
     }
 
@@ -195,16 +197,11 @@ class ShopController extends Controller
 
     public function postAdvertise(AdvertiseRequest $request)
     {
-        $destinationPath = 'uploads'; // upload path
-        $extension = Input::file('banner')->getClientOriginalExtension(); // getting image extension
-        $fileName = rand(11111, 99999) . '.' . $extension; // renaming image
-        Input::file('banner')->move($destinationPath, $fileName);
-
         Advertisement::create([
             'shop_id' => Auth::user()->shop->id,
             'title' => $request->input('title'),
             'description' => $request->input('description'),
-            'banner' => 'uploads/' . $fileName
+            'banner' => $request->input('banner')
         ]);
 
         return redirect(action('ShopController@show', Auth::user()->shop->id));

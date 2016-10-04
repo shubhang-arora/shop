@@ -7,12 +7,12 @@
 <html dir="ltr" lang="en">
 <!--<![endif]-->
 <head>
-    @include('includes.head')
+    @include('include.head')
 </head>
 <body>
-    @yield('content')
-    @include('includes.footer')
-    @include('includes.scripts')
-    @yield('scripts')
+{{--@include('include.header')--}}
+@yield('content')
+@include('include.footer')
+@include('include.scripts')
 </body>
 </html>

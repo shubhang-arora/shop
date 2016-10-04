@@ -26,7 +26,7 @@ class AdvertiseRequest extends Request
         return [
             'title' => 'required',
             'description' => 'required|max:30',
-            'banner' => 'image'
+            'banner' => 'required'
         ];
     }
 }
