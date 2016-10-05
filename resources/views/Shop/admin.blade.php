@@ -1,6 +1,7 @@
-@extends('app')
+@extends('master')
 
 @section('content')
+    @include('include.header',['material'=>false])
     <div class="products-grid">
         <header>
             <h3 class="head text-center">Admin Panel</h3>
@@ -43,8 +44,10 @@
                                required>
                         {!! Form::close() !!}
                     </div>
+                    <br>
                 </div>
             </div>
+            <br>
         </div>
 
     </div>
@@ -60,4 +63,5 @@
 
 @section('head')
     <title>Admin - Businessway</title>
+    <link href="{{asset('/css/style.css')}}" rel="stylesheet" type="text/css" media="all"/>
 @endsection

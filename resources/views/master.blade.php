@@ -9,8 +9,7 @@
 <head>
     @include('include.head')
 </head>
-<body>
-{{--@include('include.header')--}}
+<body class="signup-page">
 @yield('content')
 @include('include.footer')
 @include('include.scripts')

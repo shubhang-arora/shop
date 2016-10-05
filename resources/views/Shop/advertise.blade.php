@@ -6,6 +6,7 @@
     </title>
     {!! HTML::style('css/dropzone.css') !!}
     {!! HTML::script('js/dropzone.js') !!}
+
     <meta charset="utf-8"/>
     <link rel="apple-touch-icon" sizes="76x76" href="{{asset('/img/apple-icon.png')}}'">
     <link rel="icon" type="image/png" href="{{asset('/img/favicon.png')}}'">
@@ -39,6 +40,7 @@
     <meta property="fb:app_id" content="308477322845753"/>
 @endsection
 @section('content')
+    @include('include.header',['material' => true])
     <div class="wrapper">
         <div class="header header-filter" style="background-size: cover; background: url('{{asset('/img/city.jpg')}}')">
             <div class="container">
@@ -50,7 +52,6 @@
                                 <div class="header header-primary text-center">
                                     <h2><b>Create new advertisement</b></h2>
                                 </div>
-
                                 <div class="content">
                                     @if($errors->any())
                                         @include('errors.list')
@@ -85,20 +86,11 @@
                 </div>
             </div>
         </div>
-
     </div>
 
 @endsection
 
 @section('scripts')
-    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-    <script src="..//js/nouislider.min.js" type="text/javascript"></script>
-
-    <!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-    <script src="..//js/bootstrap-datepicker.js" type="text/javascript"></script>
-
-    <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
-    <script src="..//js/material-kit.js" type="text/javascript"></script>
     <script>
         Dropzone.autoDiscover = false;
         var imageUploadDropzone = new Dropzone("div#upload_images", {
@@ -108,7 +100,8 @@
             parallelUploads: 1,
             uploadMultiple: false,
             maxFiles: 1,
-            dictDefaultMessage: 'Upload the banner for your advertisement'
+            dictDefaultMessage: 'Upload the banner for your advertisement',
+            autoQueue: false
         });
         imageUploadDropzone.on('sending', function (file, xhr, formData) {
             formData.append('_token', $('[name=_token]').attr('content'));

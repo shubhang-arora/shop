@@ -1,0 +1,17 @@
+@if($material)
+    @if(\Illuminate\Support\Facades\Auth::check()==false)
+        @include('include.unauthNavMaterial')
+    @elseif(\Illuminate\Support\Facades\Auth::user()->admin)
+        @include('include.adminNavMaterial')
+    @else
+        @include('include.userNavMaterial')
+    @endif
+@else
+    @if(\Illuminate\Support\Facades\Auth::check()==false)
+        @include('include.unauthNav')
+    @elseif(\Illuminate\Support\Facades\Auth::user()->admin)
+        @include('include.adminNav')
+    @else
+        @include('include.userNav')
+    @endif
+@endif

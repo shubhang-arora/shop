@@ -63,52 +63,7 @@
 
 <br>
 --}}
-
-    <div class="row header">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 col-sm-12">
-            <div class="col-md-3 col-sm-12">
-                <h1 class="display-4"><a href="{{url('/')}}">Businessway</a></h1>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div id="custom-search-input">
-                    <div class="input-group col-md-12">
-                        {!! Form::open(['action'=>'ShopController@search','method'=>'post','id'=>'searchForm']) !!}
-                        <input type="text" class="form-control input-lg" name="shopName" id="search"
-                               placeholder="Search Shop" required>
-                        {!! Form::close() !!}
-                        <span class="input-group-btn">
-                            <a class="btn btn-info btn-lg"
-                               onclick="if($('[name=shopName]').val()!=''){$('form#searchForm').trigger('submit')}">Search</a>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-5 col-sm-6">
-                @if(\Illuminate\Support\Facades\Auth::check())
-                    <div class="authen-box">
-                        <a href="{{url('auth/logout')}}"><span class="btn btn-default btn-lg"><i class="glyphicon glyphicon-log-out"></i> Logout</span></a>
-                    </div>
-                @else
-                    <div class="authen-box">
-                        <a href="{{url('auth/login')}}"><span class="btn btn-default btn-lg"><i
-                                        class="glyphicon glyphicon-user"></i> Login</span></a>
-                        &nbsp;
-                        <a href="{{url('auth/register')}}"><span class="btn btn-default btn-lg"><i
-                                        class="glyphicon glyphicon-lock"></i> Register</span></a>
-                    </div>
-                @endif
-            </div>
-        </div>
-        <div class="col-md-2 col-sm-12">
-            <div class="offers">
-                <a href="{{url('offers')}}"><span class="btn btn-default btn-lg"><i
-                                class="glyphicon glyphicon-gift"></i> Click here for All Offers</span></a>
-            </div>
-        </div>
-    </div>
-    <br>
-
+    @include('include.header',['material'=>false])
 
     <!--Adverts Carousel-->
     @if(isset($adverts))
@@ -321,65 +276,11 @@
 @section('head')
     <title>Home Page</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="_token" content="{{ csrf_token() }}">
-    <meta property="og:url" content="{{request()->url()}}"/>
-    <meta property="og:type" content="company"/>
-    <meta property="fb:app_id" content="308477322845753"/>
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-    <script src="https://use.fontawesome.com/47c04783bd.js"></script>
-    <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet"/>
     <link href="{{asset('/css/style.css')}}" rel="stylesheet" type="text/css" media="all"/>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
-
 
     {!! HTML::script('js/dropzone.js') !!}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     {!! HTML::style('css/dropzone.css') !!}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
 
-
-
-
-    {{--    <title>Businessway</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Home Page</title>
-        <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-        <!--   Core JS Files   -->
-        <script src="{{asset('/js/jquery.min.js')}}" type="text/javascript"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script src="{{asset('/js/material.min.js')}}"></script>
-        <script src="{{asset('/js/material-kit.js')}}"></script>
-        {!! HTML::script('js/dropzone.js') !!}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-
-
-
-        <!-- CSS Files -->
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link href="{{asset('/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
-        <link href="{{asset('/css/material-kit.css')}}" rel="stylesheet"/>
-        {!! HTML::style('css/dropzone.css') !!}
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
-
-        <!--     Fonts and icons     -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
-        <script src="https://use.fontawesome.com/47c04783bd.js"></script>
-
-
-        <meta name="_token" content="{{ csrf_token() }}">
-        <meta property="og:url" content="{{request()->url()}}"/>
-        <meta property="og:type" content="company"/>
-        <meta property="fb:app_id" content="308477322845753"/>--}}
 @endsection

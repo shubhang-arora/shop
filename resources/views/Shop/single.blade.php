@@ -1,5 +1,8 @@
-@extends('app')
+@extends('master')
+@section('head')
+    <link href="{{asset('/css/shop_style.css')}}" rel="stylesheet" type="text/css" media="all" />
 
+@endsection
 @section('content')
     <div class="container">
         <div class="products-page">
