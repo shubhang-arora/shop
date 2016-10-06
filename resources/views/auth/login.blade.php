@@ -6,6 +6,7 @@
     <link href="{{asset('/css/material-kit.css')}}" rel="stylesheet"/>
 @endsection
 @section('content')
+    @include('include.header')
     <div class="wrapper">
         <div class="header header-filter" style="background-size: cover; background: url('{{asset('/img/city.jpg')}}'">
             <div class="container">

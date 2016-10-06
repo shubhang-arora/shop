@@ -16,7 +16,8 @@ trait RegistersUsers
      */
     public function getRegister()
     {
-        return view('auth.register');
+        $material = true;
+        return view('auth.register',compact('material'));
     }
 
     /**

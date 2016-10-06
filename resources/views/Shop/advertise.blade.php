@@ -40,7 +40,7 @@
     <meta property="fb:app_id" content="308477322845753"/>
 @endsection
 @section('content')
-    @include('include.header',['material' => true])
+    @include('include.header')
     <div class="wrapper">
         <div class="header header-filter" style="background-size: cover; background: url('{{asset('/img/city.jpg')}}')">
             <div class="container">

@@ -17,11 +17,12 @@ trait AuthenticatesUsers
      */
     public function getLogin()
     {
+        $material = true;
         if (view()->exists('auth.authenticate')) {
-            return view('auth.authenticate');
+            return view('auth.authenticate',compact('material'));
         }
 
-        return view('auth.login');
+        return view('auth.login',compact('material'));
     }
 
     /**

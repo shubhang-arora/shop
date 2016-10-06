@@ -52,8 +52,8 @@ class ShopController extends Controller
         $shops = Shop::latest('created_at')->where('added', 1)->where('deleted', 0)->get();
         $categories = Category::lists('name', 'id');
         $cities = City::lists('city_name', 'id');
-
-        return view('Shop.home', compact('shops', 'categories', 'cities','adverts'));
+        $material = false;
+        return view('Shop.home', compact('shops', 'categories', 'cities','adverts','material'));
     }
 
     /**
@@ -192,7 +192,8 @@ class ShopController extends Controller
 
     public function getAdvertise()
     {
-        return view('Shop.advertise');
+        $material = true;
+        return view('Shop.advertise',compact('material'));
     }
 
     public function postAdvertise(AdvertiseRequest $request)
