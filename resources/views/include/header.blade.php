@@ -1,4 +1,4 @@
-@if($material)
+@if(isset($material)&&$material)
     @if(\Illuminate\Support\Facades\Auth::check()==false)
         @include('include.unauthNavMaterial')
     @elseif(\Illuminate\Support\Facades\Auth::user()->admin)

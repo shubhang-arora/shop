@@ -63,7 +63,7 @@
 
 <br>
 --}}
-    @include('include.header',['material'=>false])
+    @include('include.header')
 
     <!--Adverts Carousel-->
     @if(isset($adverts))

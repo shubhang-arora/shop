@@ -67,6 +67,7 @@ class ShopController extends Controller
         $states = State::lists('state_name', 'id');
         $cities = State::where('state_name',$states->first())->get()->first()->cities->lists('city_name', 'id');
         $zipcodes = City::where('city_name',$cities->first())->get()->first()->zipcodes->lists('code', 'id');
+        $material = true;
         return view('Shop.register', compact('categories', 'cities', 'states', 'zipcodes'));
     }
 
@@ -144,7 +145,7 @@ class ShopController extends Controller
         $ip_address = request()->ip();
         $liked = DB::table('ip_address')->where('ip', $ip_address)->count() > 0;
         $shop = Shop::findorfail($id);
-
+        $material = true;
         if(!(DB::table('views')->where('ip',$ip_address)->count()>0))
         {
             DB::table('views')->insert([
@@ -152,7 +153,7 @@ class ShopController extends Controller
                 'shop_id'   =>  $shop->id
             ]);
         }
-        return view('Shop.single', compact('shop', 'liked'));
+        return view('Shop.single', compact('shop', 'liked','material'));
     }
 
     /**

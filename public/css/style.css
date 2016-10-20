@@ -345,6 +345,7 @@ body{
 
 .heart {
     background: url(images/web_heart_animation.png) no-repeat left;
+    display: inline-block;
     height: 50px;
     width: 50px;
     cursor: pointer;
