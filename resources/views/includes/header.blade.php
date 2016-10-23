@@ -2,7 +2,7 @@
 <div class="header">
     <div class="header-top-strip">
         <div class="container">
-            <div class="text-center"><h1><a href="{{url('/')}}" id="titleHeader">Businessway</a></h1>
+            <div class="text-center"><h1><a href="{{url('/')}}" id="titleHeader">Semigoogle</a></h1>
             </div>
         </div>
     </div>
