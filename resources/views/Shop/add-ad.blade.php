@@ -33,5 +33,5 @@
 @endsection
 
 @section('head')
-    <title>Approve Advertisement - Businessway</title>
+    <title>Approve Advertisement - E Shoppee</title>
 @endsection

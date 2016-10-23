@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('head')
-    <title>Register Shop - Businessway</title>
+    <title>Register Shop - E Shoppee</title>
 
     <!-- CSS Files -->
     <link href="{{asset('/css/material-kit.css')}}" rel="stylesheet"/>

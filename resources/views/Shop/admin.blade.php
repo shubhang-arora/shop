@@ -50,6 +50,6 @@
 @endsection
 
 @section('head')
-    <title>Admin - Businessway</title>
+    <title>Admin - E Shoppee</title>
     <link href="{{asset('/css/style.css')}}" rel="stylesheet" type="text/css" media="all"/>
 @endsection

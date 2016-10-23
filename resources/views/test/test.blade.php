@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="{{asset('/img/favicon.png')}}'">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>Create Shop - Businessway</title>
+    <title>Create Shop - E Shoppee</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
 
@@ -113,7 +113,7 @@
                     </ul>
                 </nav>
                 <div class="copyright pull-right">
-                    Copyright &copy; 2016 | Businessway. All Rights Reserved.
+                    Copyright &copy; 2016 | E Shoppee. All Rights Reserved.
                 </div>
             </div>
         </footer>

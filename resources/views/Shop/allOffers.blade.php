@@ -40,5 +40,5 @@
 @endsection
 
 @section('head')
-    <title>All Offers - Businessway</title>
+    <title>All Offers - E Shoppee</title>
 @endsection

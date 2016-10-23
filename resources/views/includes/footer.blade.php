@@ -7,7 +7,7 @@
                      src='https://lh3.googleusercontent.com/-ESoug2foJBs/T-ntmH-Vs3I/AAAAAAAAGIM/FUQoD54w1oQ/s267/bringfriends.png'>
             </a>
             <br>
-            <p>Copyright &copy; 2016 | Businessway. All Rights Reserved |</p>
+            <p>Copyright &copy; 2016 | E Shoppee. All Rights Reserved |</p>
         </div>
     </div>
 </div>

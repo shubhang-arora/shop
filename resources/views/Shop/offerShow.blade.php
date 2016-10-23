@@ -34,5 +34,5 @@
     </script>
 @endsection
 @section('head')
-    <title>{{$offer->title}} Offer - Businessway</title>
+    <title>{{$offer->title}} Offer - E Shoppee</title>
 @endsection

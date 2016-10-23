@@ -41,5 +41,5 @@
 @endsection
 
 @section('head')
-    <title>{{$title}} Shops - Businessway</title>
+    <title>{{$title}} Shops - E Shoppee</title>
 @endsection

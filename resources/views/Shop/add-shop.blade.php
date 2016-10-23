@@ -51,7 +51,7 @@
 @endsection
 
 @section('head')
-    <title>Add Shop - Businessway</title>
+    <title>Add Shop - E Shoppee</title>
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>

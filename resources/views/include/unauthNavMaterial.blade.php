@@ -2,7 +2,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{{url('/')}}"><strong>Businessway</strong></a>
+                <a class="navbar-brand" href="{{url('/')}}"><strong>E Shoppee</strong></a>
             </div>
 
 

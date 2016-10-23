@@ -1,6 +1,6 @@
 @extends('master')
 @section('head')
-    <title>{{$shop->shop_name}} - Businessway</title>
+    <title>{{$shop->shop_name}} - E Shoppee</title>
 
 
     <meta property="og:title" content="{{$shop->shop_name}}"/>

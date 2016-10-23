@@ -2,7 +2,7 @@
     <div class="col-md-2"></div>
     <div class="col-md-8 col-sm-12">
         <div class="col-md-3 col-sm-12">
-            <h1 class="display-4"><a href="{{url('/')}}">Businessway</a></h1>
+            <h1 class="display-4"><a href="{{url('/')}}">E Shoppee</a></h1>
         </div>
         <div class="col-md-4 col-sm-6">
             <div id="custom-search-input">

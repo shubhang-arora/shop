@@ -16,7 +16,7 @@
                     <li><a href="#!">Privacy Policy</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#!">Copyright &copy; 2016 | Businessway</a></li>
+                    <li><a href="#!">Copyright &copy; 2016 | E Shoppee</a></li>
                     <li><a href="#!">All Rights Reserved</a></li>
                 </ul>
             </div>
