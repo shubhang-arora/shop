@@ -7,7 +7,7 @@
                      src='https://lh3.googleusercontent.com/-ESoug2foJBs/T-ntmH-Vs3I/AAAAAAAAGIM/FUQoD54w1oQ/s267/bringfriends.png'>
             </a>
             <br>
-            <p>Copyright &copy; 2016 | Businessway. All Rights Reserved | Designed by <strong>Shubhang Arora</strong> & <strong>Sahil Sharma</strong></p>
+            <p>Copyright &copy; 2016 | Businessway. All Rights Reserved |</p>
         </div>
     </div>
 </div>
